@@ -1,0 +1,8 @@
+---
+
+- name: install brave 
+  kewlfft.aur.aur:
+    name: 
+      - brave-bin
+    use: yay
+    state: present

@@ -1,0 +1,69 @@
+---
+- name: Install nodejs and npm
+  community.general.pacman:
+    name: ["nodejs", "npm"]
+  tags:
+    - install
+    - node
+
+- name: Install N
+  npm:
+    name: n
+    global: yes
+  tags:
+    - install
+    - node
+- name: Install correct version of Node
+  shell: n 14
+  tags:
+    - install
+    - node
+
+
+- name: Install Yarn
+  npm:
+    name: yarn
+    global: yes
+  tags:
+    - install
+    - node
+
+- name: Install eslint
+  npm:
+    name: eslint
+    global: yes
+  tags:
+    - install
+    - node
+
+- name: Install Typescript server
+  npm:
+    name: typescript-language-server
+    global: yes
+  tags:
+    - install
+    - node
+
+- name: Install Typescript
+  npm:
+    name: typescript
+    global: yes
+  tags:
+    - install
+    - node
+
+- name: Install TS-Node
+  npm:
+    name: ts-node
+    global: yes
+  tags:
+    - install
+    - node
+
+- name: Install eslintd
+  npm:
+    name: eslint_d
+    global: yes
+  tags:
+    - install
+    - node

@@ -1,0 +1,37 @@
+- name: install basic utils apps, shells, apps
+  community.general.pacman:
+   name:
+     # - thefuck
+    - xorg
+    - kitty
+    - vlc
+    - git
+    - tmux
+    - lsd
+    - vim
+    - tree
+    - base-devel
+   state: present
+
+- name: Install archival utils
+  pacman:
+    name:
+      - atool
+      - p7zip
+      - unrar
+      - unzip
+      - xz
+      - zip
+      - bzip2
+      - gzip
+      - tar
+    state: present
+
+- name: Install download utils
+  pacman:
+    name:
+      - aria2
+      - curl
+      - wget
+    state: present
+

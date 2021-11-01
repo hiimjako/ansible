@@ -1,0 +1,16 @@
+- name: check updates
+  pacman: 
+   update_cache: yes
+   upgrade: yes
+
+- include: pacman.yml
+- include: core-apps.yml
+
+# Zsh
+- include: zsh.yml
+
+# Install and configure spacevim
+- include: vim.yml
+
+- include: node.yml
+- include: git.yml

@@ -1,0 +1,8 @@
+---
+
+- name: install nvim
+  community.general.pacman:
+   name: 
+     - nvim 
+   state: present
+
