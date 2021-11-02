@@ -10,6 +10,9 @@
 - include: pacman.yml
 - include: core-apps.yml
 
+- include: dotfiles.yml
+  when: include_dotfiles == True
+
 # Zsh
 - include: zsh.yml
 

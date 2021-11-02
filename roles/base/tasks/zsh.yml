@@ -41,6 +41,7 @@
    owner: "{{ username }}"
    group: "{{ username }}"
    mode: u+rw,g+r,o--
+  when: include_dotfiles == True
 
 - name: copy zsh p10k dotfile
   copy: 
@@ -50,6 +51,7 @@
    owner: "{{ username }}"
    group: "{{ username }}"
    mode: u+rw,g+r,o--
+  when: include_dotfiles == True
 
 - name: clone oh-my-zsh for users
   tags:
