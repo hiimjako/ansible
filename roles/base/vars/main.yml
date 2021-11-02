@@ -14,8 +14,8 @@ setup_zsh: True
 pull_dotfiles: True
 
 dotfiles:
-    url: https://github.com/hiimjako/dotfiles 
-    destination: ~/.cfg
+    url: https://github.com/linuxpiper/dotfiles.git
+    destination: projects/dotfiles
     rcup_flags: -fx README.md
 
 ## Desktop
@@ -23,11 +23,16 @@ install_i3: True
 
 ## App Preferences
 ## ===========================
+# Web Browser
+# Value can be: vivaldi, firefox, brave, or chromium
 browser: brave
 
 ## Spacevim? You know you need it
 install_spacevim: True
 ## ===========================
+
+## Console-based email client
+install_aerc: True
 
 ## AUR vars
 ## ===========================
@@ -39,16 +44,8 @@ aur:
         - yay
         - downgrade
         - zplug
-        # - miller
-        # - spiped
-
-pacman:
-    packages:
-        - sxhkd
-        - mupdf
-        - pulseaudio
-        - pulseaudio-alsa
-        - alsa-utils
-        - brightnessctl
-        - bashmount
+        - miller
+        - myrepos
+        - ctmg
+        - spiped
 ## ===========================

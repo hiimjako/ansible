@@ -1,3 +1,11 @@
+---
+
+# - name: install nvim
+#   community.general.pacman:
+#    name: 
+#      - nvim 
+#    state: present
+
 - name: Clone Neovim
   ansible.builtin.git:
     repo: 'https://github.com/neovim/neovim.git'

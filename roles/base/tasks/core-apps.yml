@@ -1,5 +1,5 @@
 - name: install basic utils apps, shells, apps
-  community.general.pacman:
+  package:
    name:
      # - thefuck
     - xorg
@@ -14,7 +14,7 @@
    state: present
 
 - name: Install archival utils
-  pacman:
+  package:
     name:
       - atool
       - p7zip
@@ -28,7 +28,7 @@
     state: present
 
 - name: Install download utils
-  pacman:
+  package:
     name:
       - aria2
       - curl
