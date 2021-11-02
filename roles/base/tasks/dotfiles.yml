@@ -2,7 +2,7 @@
 
 - name: Clone user dotfiles
   ansible.builtin.git: 
-    - repo: {{ dotfiles.url }}
+    - repo: "{{ dotfiles.url }}"
     - dest: "/home/{{ username }}/{{ dotfiles.destination }}" 
     - bare: yes
     - update: no
