@@ -1,5 +1,3 @@
----
-
 - name: install zsh
   community.general.pacman:
    name: 
