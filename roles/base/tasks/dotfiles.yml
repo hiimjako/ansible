@@ -1,11 +1,11 @@
 - name: Clone user dotfiles
   ansible.builtin.git: 
-    - repo: "{{ dotfiles.url }}"
-    - dest: "/home/{{ username }}/{{ dotfiles.destination }}" 
-    - bare: yes
-    - update: no
-    - recursive: yes
-    - version: master
+    repo: "{{ dotfiles.url }}"
+    dest: "/home/{{ username }}/{{ dotfiles.destination }}" 
+    bare: yes
+    update: no
+    recursive: yes
+    version: master
   become: yes
   become_user: "{{ username }}"
 
