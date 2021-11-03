@@ -65,10 +65,11 @@
     creates: '~{{ username }}/.oh-my-zsh'
 
 
-- name: copy powerlevel10k theme
-  copy:
-   src: zsh-theme-powerlevel10k/
-   dest: /usr/share/zsh-theme-powerlevel10k/
-   force: False
-   mode: u+rw,g+xr,o+x
+- name: clone powerlevel10k theme
+  become: yes
+  become_user: '{{ username }}'
+  command: 'git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k'
+  args:
+    chdir: '~{{ username }}'
+    # creates: '~{{ username }}/.oh-my-zsh/custom/theme/powerlevel10k'
 
