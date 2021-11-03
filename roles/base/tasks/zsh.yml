@@ -33,7 +33,7 @@
 
 - name: copy zsh dotfile
   copy: 
-   src: user_home/.zshrc 
+   src: /home/{{username}}/.zshrc 
    dest: /home/{{ username }}/.zshrc
    force: False
    owner: "{{ username }}"
@@ -43,7 +43,7 @@
 
 - name: copy zsh p10k dotfile
   copy: 
-   src: user_home/.p10k.zsh
+   src: /home/{{ username }}/.p10k.zsh
    dest: /home/{{ username }}/.p10k.zsh
    force: False
    owner: "{{ username }}"
