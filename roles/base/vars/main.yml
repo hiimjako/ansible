@@ -8,6 +8,7 @@ pull_dotfiles: True
 dotfiles:
     url: git@github.com:hiimjako/dotfiles.git
     destination: .cfg
+    alias: /usr/bin/git --git-dir=/home/jako/.cfg/ --work-tree=/home/jako 
 
 ## Desktop
 install_i3: True
