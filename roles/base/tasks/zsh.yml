@@ -1,20 +1,20 @@
 - name: install zsh
   community.general.pacman:
-   name: 
-    - zsh
-    - zsh-completions
-    - zsh-syntax-highlighting
-   state: present
-   become: yes
-   become_user: '{{ username }}'
+    name: 
+     - zsh
+     - zsh-completions
+     - zsh-syntax-highlighting
+    state: present
+    become: yes
+    become_user: '{{ username }}'
 
 - name: install ranger for zsh
   community.general.pacman:
-   name: 
-    - ranger
-   state: present
-   become: yes
-   become_user: '{{ username }}'
+    name: 
+     - ranger
+    state: present
+    become: yes
+    become_user: '{{ username }}'
 
 - name: clone oh-my-zsh for users
   tags:
@@ -32,8 +32,8 @@
 - name: change "{{ username }}"'s shell to zsh
   become: yes
   user:
-   name: "{{ username }}"
-   shell: /usr/bin/zsh
+    name: "{{ username }}"
+    shell: /usr/bin/zsh
 
 - name: Remove Oh-My-Zsh if installed
   shell: uninstall_oh_my_zsh
