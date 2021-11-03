@@ -12,6 +12,18 @@
     - ranger
    state: present
 
+- name: clone oh-my-zsh for users
+  tags:
+    # Suppress warning: [ANSIBLE0006] git used in place of git module
+    # Git module doesn't allow us to set `core.autocrlf=input`.
+    - skip_ansible_lint
+  become: yes
+  become_user: '{{ username }}'
+  # core.autocrlf=input prevents https://github.com/robbyrussell/oh-my-zsh/issues/4402
+  command: 'git clone -c core.autocrlf=input https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh'
+  args:
+    chdir: '~{{ username }}'
+    creates: '~{{ username }}/.oh-my-zsh'
 
 - name: change "{{ username }}"'s shell to zsh
   become: yes
@@ -26,10 +38,16 @@
     - productivity
     - dotfiles
     - zsh
+
+- name: Install zsh-syntax-highlighting
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    dest: "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+
 - name: Install zsh-autosuggestions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
-    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+    dest: "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 
 # - name: copy zsh dotfile
 #   copy: 
@@ -51,25 +69,8 @@
 #    mode: u+rw,g+r,o--
 #   when: include_dotfiles == True
 
-- name: clone oh-my-zsh for users
-  tags:
-    # Suppress warning: [ANSIBLE0006] git used in place of git module
-    # Git module doesn't allow us to set `core.autocrlf=input`.
-    - skip_ansible_lint
-  become: yes
-  become_user: '{{ username }}'
-  # core.autocrlf=input prevents https://github.com/robbyrussell/oh-my-zsh/issues/4402
-  command: 'git clone -c core.autocrlf=input https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh'
-  args:
-    chdir: '~{{ username }}'
-    creates: '~{{ username }}/.oh-my-zsh'
-
-
 - name: clone powerlevel10k theme
-  become: yes
-  become_user: '{{ username }}'
-  command: 'git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"'
-  # args:
-  #   chdir: '~{{ username }}'
-    # creates: '~{{ username }}/.oh-my-zsh/custom/theme/powerlevel10k'
+  ansible.builtin.git:
+    repo: 'https://github.com/romkatv/powerlevel10k.git'
+    dest: "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
