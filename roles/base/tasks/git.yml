@@ -4,7 +4,7 @@
   git_config:
     name: user.email
     scope: global
-    value: "moretti919#@gmail.com"
+    value: "moretti919@gmail.com"
   tags:
   - git-personal
 
