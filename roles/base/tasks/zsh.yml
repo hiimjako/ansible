@@ -39,8 +39,6 @@
   shell: uninstall_oh_my_zsh
   args:  
     warn: no
-  become: yes
-  become_user: '{{ username }}'
 
 - name: Oh-My-Zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
