@@ -37,7 +37,8 @@
 
 - name: Remove Oh-My-Zsh if installed
   shell: uninstall_oh_my_zsh
-  warn: no
+  args:  
+    warn: no
   become: yes
   become_user: '{{ username }}'
 
