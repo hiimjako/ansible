@@ -5,12 +5,16 @@
     - zsh-completions
     - zsh-syntax-highlighting
    state: present
+   become: yes
+   become_user: '{{ username }}'
 
 - name: install ranger for zsh
   community.general.pacman:
    name: 
     - ranger
    state: present
+   become: yes
+   become_user: '{{ username }}'
 
 - name: clone oh-my-zsh for users
   tags:
@@ -31,6 +35,12 @@
    name: "{{ username }}"
    shell: /usr/bin/zsh
 
+- name: Remove Oh-My-Zsh if installed
+  shell: uninstall_oh_my_zsh
+  warn: no
+  become: yes
+  become_user: '{{ username }}'
+
 - name: Oh-My-Zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
   tags:
@@ -38,16 +48,22 @@
     - productivity
     - dotfiles
     - zsh
+  become: yes
+  become_user: '{{ username }}'
 
 - name: Install zsh-syntax-highlighting
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
     dest: "${ZSH_CUSTOM:-~/.oh-my-zsh/}/plugins/zsh-syntax-highlighting"
+  become: yes
+  become_user: '{{ username }}'
 
 - name: Install zsh-autosuggestions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: "${ZSH_CUSTOM:-~/.oh-my-zsh/}/plugins/zsh-autosuggestions"
+  become: yes
+  become_user: '{{ username }}'
 
 # - name: copy zsh dotfile
 #   copy: 
@@ -73,4 +89,6 @@
   ansible.builtin.git:
     repo: 'https://github.com/romkatv/powerlevel10k.git'
     dest: "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+  become: yes
+  become_user: '{{ username }}'
 
