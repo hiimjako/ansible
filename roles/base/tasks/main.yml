@@ -2,11 +2,6 @@
 - include_vars: "{{ ansible_distribution }}.yml"
   tags: always
 
-- name: check updates
-  pacman: 
-   update_cache: yes
-   upgrade: yes
-
 - include: pacman.yml
 - include: core-apps.yml
 
