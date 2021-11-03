@@ -7,6 +7,7 @@ aur:
     packages:
         - yay
         - downgrade
+        - i3lock-fancy-git
         - zplug
         - miller
         - myrepos
