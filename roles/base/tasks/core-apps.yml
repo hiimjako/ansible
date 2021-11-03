@@ -12,6 +12,7 @@
     - tree
     - base-devel
     - cmake 
+    - pavucontrol
    state: present
 
 - name: Install archival utils
