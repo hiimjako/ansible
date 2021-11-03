@@ -36,7 +36,7 @@
     shell: /usr/bin/zsh
 
 - name: Oh-My-Zsh
-  shell: uninstall_oh_my_zsh || id && curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  shell: uninstall_oh_my_zsh || curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
   tags:
     - install
     - productivity
