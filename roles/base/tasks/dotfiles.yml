@@ -21,7 +21,7 @@
 - name: Backup old config
   vars:
     regex: "\\s+\\."
-  shell: "{{ dotfiles.alias }} checkout 2>&1 | egrep -E {{ regex }} | awk {'print $1'} | xargs -I{} mv /home/{{ username }}/{} /home/{{ username }}/.config-backup/{}"
+  shell: "{{ dotfiles.alias }} checkout 2>&1 | grep -E {{ regex }} | awk {'print $1'} | xargs -I{} mv /home/{{ username }}/{} /home/{{ username }}/.config-backup/{}"
   become: yes
   become_user: "{{ username }}" 
 
