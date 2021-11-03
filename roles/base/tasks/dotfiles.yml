@@ -13,14 +13,18 @@
 #   command: "alias config='/usr/bin/git --git-dir=/home/{{ username }}/.cfg/ --work-tree=$HOME'"
 #   become: yes
 #   become_user: "{{ username }}" 
+- name: Create backup folder
+  command: "mkdir -p .config-backup"
+  become: yes
+  become_user: "{{ username }}" 
 
 - name: Backup old config
-  command: "mkdir -p .config-backup && {{ dotfiles.alias }}  checkout 2>&1 | egrep \"\\s+\\.\" | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}"
+  shell: "{{ dotfiles.alias }}  checkout 2>&1 | egrep \"\\s+\\.\" | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}"
   become: yes
   become_user: "{{ username }}" 
 
 - name: Do git stuff
-  command: "{{ dotfiles.alias }}  checkout 2>&1 config --local status.showUntrackedFiles no"
+  shell: "{{ dotfiles.alias }}  checkout 2>&1 config --local status.showUntrackedFiles no"
   become: yes
   become_user: "{{ username }}" 
 
