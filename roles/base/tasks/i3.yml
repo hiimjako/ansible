@@ -5,7 +5,6 @@
    name: 
      - i3blocks
      - i3lock
-     - i3lock-fancy-git
      - i3status
      - i3-gaps
      - dmenu
