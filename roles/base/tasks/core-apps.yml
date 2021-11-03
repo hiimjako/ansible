@@ -11,6 +11,7 @@
     - vim
     - tree
     - base-devel
+    - cmake 
    state: present
 
 - name: Install archival utils

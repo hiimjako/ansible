@@ -68,8 +68,8 @@
 - name: clone powerlevel10k theme
   become: yes
   become_user: '{{ username }}'
-  command: 'git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k'
-  args:
-    chdir: '~{{ username }}'
+  command: 'git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"'
+  # args:
+  #   chdir: '~{{ username }}'
     # creates: '~{{ username }}/.oh-my-zsh/custom/theme/powerlevel10k'
 
