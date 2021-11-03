@@ -30,4 +30,15 @@
   become: yes
   become_user: "{{ username }}" 
 
+- name: checkout real stuffs
+  shell: "{{ dotfiles.alias }} checkout"
+  become: yes
+  become_user: "{{ username }}" 
+
+- name: Remove extra files
+  ansible.builtin.file:
+    path: "rm /home/{{ username }}/README.md"
+    state: absent
+  become: yes
+  become_user: "{{ username }}" 
 
