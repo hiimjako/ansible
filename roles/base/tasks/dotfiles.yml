@@ -19,7 +19,9 @@
   become_user: "{{ username }}" 
 
 - name: Backup old config
-  shell: "{{ dotfiles.alias }}  checkout 2>&1 | egrep \"\\s+\\.\" | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}"
+  vars:
+    regex: "\\s+\\."
+  shell: "{{ dotfiles.alias }}  checkout 2>&1 | egrep -E {{ regex }} | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}"
   become: yes
   become_user: "{{ username }}" 
 
