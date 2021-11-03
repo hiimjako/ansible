@@ -9,18 +9,18 @@
   become: yes
   become_user: "{{ username }}"
 
-- name: Setting config as alias of bare repo
-  command: "alias config='/usr/bin/git --git-dir=/home/{{ username }}/.cfg/ --work-tree=$HOME'"
-  become: yes
-  become_user: "{{ username }}" 
+# - name: Setting config as alias of bare repo
+#   command: "alias config='/usr/bin/git --git-dir=/home/{{ username }}/.cfg/ --work-tree=$HOME'"
+#   become: yes
+#   become_user: "{{ username }}" 
 
 - name: Backup old config
-  command: mkdir -p .config-backup && config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+  command: mkdir -p .config-backup && /usr/bin/git --git-dir=/home/jako/.cfg/ --work-tree=/home/jako checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
   become: yes
   become_user: "{{ username }}" 
 
 - name: Do git stuff
-  command: "config config --local status.showUntrackedFiles no"
+  command: "/usr/bin/git --git-dir=/home/jako/.cfg/ --work-tree=/home/jako checkout 2>&1 config --local status.showUntrackedFiles no"
   become: yes
   become_user: "{{ username }}" 
 
