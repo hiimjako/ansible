@@ -1,3 +1,4 @@
+---
 # Zsh
 - include: zsh.yml
 
@@ -8,4 +9,4 @@
   when: include_dotfiles == True
 
 - include: ssh.yml
-  where: include_ssh == True
+  when: include_ssh == True
