@@ -9,7 +9,7 @@
 - name: Clone Neovim
   ansible.builtin.git:
     repo: 'https://github.com/neovim/neovim.git'
-    dest: "{{ lookup('env', 'HOME') }}/neovim"
+    dest: "/home/{{ username }}/neovim"
   become: yes
   become_user: "{{ username }}"
   tags:
@@ -18,7 +18,7 @@
   when: build_nvim == True
 
 - name: Build neovim
-  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make"
+  shell: "cd /home/{{ username }}/neovim && make"
   become: yes
   become_user: "{{ username }}"
   tags:
@@ -27,7 +27,7 @@
   when: build_nvim == True
 
 - name: Install neovim
-  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make install"
+  shell: "cd /home/{{ username }}/neovim && make install"
   become: yes
   become_user: "{{ username }}"
   tags:
@@ -38,7 +38,7 @@
 - name: remove neovim folder
   file:
     state: absent
-    path: "{{ lookup('env', 'HOME') }}/neovim"
+    path: "/home/{{ username }}/neovim"
   become: yes
   become_user: "{{ username }}"
   tags:
