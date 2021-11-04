@@ -29,7 +29,6 @@
 - name: Install neovim
   shell: "cd /home/{{ username }}/neovim && make install"
   become: yes
-  become_user: "{{ username }}"
   tags:
     - install
     - neovim
