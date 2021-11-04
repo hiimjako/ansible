@@ -6,7 +6,6 @@
      - zsh-syntax-highlighting
     state: present
   become: yes
-  become_user: '{{ username }}'
 
 - name: install ranger for zsh
   community.general.pacman:
@@ -14,7 +13,6 @@
      - ranger
     state: present
   become: yes
-  become_user: '{{ username }}'
 
 - name: clone oh-my-zsh for users
   tags:
