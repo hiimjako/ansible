@@ -26,6 +26,7 @@
 
 # to change host: workstation
 - hosts: all
+  connection: local
   tags: workstation
   become: true
   roles:
