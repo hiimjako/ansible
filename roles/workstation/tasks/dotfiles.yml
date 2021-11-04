@@ -21,7 +21,7 @@
 - name: Backup old config
   vars:
     regex: "\\\\s+\\\\."
-  shell: "{{ dotfiles.alias }} checkout 2>&1 | grep -E {{ regex }} | grep -v \"^M\" | cut -dM -f2 | awk {'print $1'} | xargs -I{} mv /home/{{ username }}/{} /home/{{ username }}/.config-backup/{}"
+  shell: "{{ dotfiles.alias }} checkout 2>&1 | grep -E {{ regex }} | grep -v \"^M\" | awk {'print $1'} | xargs -I{} mv /home/{{ username }}/{} /home/{{ username }}/.config-backup/{}"
   become: yes
   become_user: "{{ username }}" 
 
@@ -31,7 +31,7 @@
   become_user: "{{ username }}" 
 
 - name: checkout real stuffs
-  shell: "{{ dotfiles.alias }} checkout"
+  shell: "{{ dotfiles.alias }} checkout -f"
   become: yes
   become_user: "{{ username }}" 
 
