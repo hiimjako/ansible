@@ -22,7 +22,7 @@
     shell: /usr/bin/zsh
 
 - name: Remove Oh-My-Zsh if installed
-  shell: uninstall_oh_my_zsh || rm -r /home/{{ username }}/.oh-my-zsh
+  shell: uninstall_oh_my_zsh || rm -r /home/{{ username }}/.oh-my-zsh || true
   args:  
     warn: no
   become: yes
