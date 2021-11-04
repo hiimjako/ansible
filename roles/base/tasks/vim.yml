@@ -3,7 +3,8 @@
    name: 
      - nvim 
    state: present
-   when: build_nvim == False
+  become: yes
+  when: build_nvim == False
 
 - name: Clone Neovim
   ansible.builtin.git:
