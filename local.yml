@@ -24,8 +24,9 @@
   roles:
     - base
 
-- hosts: workstation
-  connection: local
+# to change host: workstation
+- hosts: all
+  tags: workstation
   become: true
   roles:
     - workstation
