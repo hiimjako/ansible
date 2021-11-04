@@ -41,14 +41,14 @@
 - name: Install zsh-syntax-highlighting
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
-    dest: "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+    dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
   become: yes
   become_user: '{{ username }}'
 
 - name: Install zsh-autosuggestions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
-    dest: "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+    dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
   become: yes
   become_user: '{{ username }}'
 
@@ -75,7 +75,7 @@
 - name: clone powerlevel10k theme
   ansible.builtin.git:
     repo: 'https://github.com/romkatv/powerlevel10k.git'
-    dest: "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+    dest: "/home/{{ username }}/.oh-my-zsh/custom/themes/powerlevel10k"
   become: yes
   become_user: '{{ username }}'
 
