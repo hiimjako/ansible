@@ -5,17 +5,10 @@
 - include: pacman.yml
 - include: core-apps.yml
 
-# Zsh
-- include: zsh.yml
-
 # Install and configure spacevim
 - include: vim.yml
 
 - include: node.yml
 - include: git.yml
 
-- include: i3.yml
-  when: install_i3 == True
 
-- include: dotfiles.yml
-  when: include_dotfiles == True

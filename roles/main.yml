@@ -1,8 +1,0 @@
----
-
-- name: playbook for arch os
-  hosts: localhost
-  become: true
-  roles:
-    - base
-    - arch

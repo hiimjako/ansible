@@ -1,0 +1,11 @@
+# Zsh
+- include: zsh.yml
+
+- include: i3.yml
+  when: install_i3 == True
+
+- include: dotfiles.yml
+  when: include_dotfiles == True
+
+- include: ssh.yml
+  where: include_ssh == True
