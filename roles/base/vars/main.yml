@@ -4,6 +4,7 @@ username: jako
 
 setup_zsh: True
 include_dotfiles: True
+build_nvim: True
 
 dotfiles:
     url: git@github.com:hiimjako/dotfiles.git
