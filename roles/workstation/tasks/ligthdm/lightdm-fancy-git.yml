@@ -1,0 +1,15 @@
+- name: create tmp folder
+  file:
+    path: "/tmp/ligthdm-theme"
+    state: directory
+
+- name: install style from git
+  ansible.builtin.git:
+    repo: 'git clone https://aur.archlinux.org/lightdm-webkit2-theme-glorious.git'
+    dest: "/tmp/ligthdm-theme"
+  become: yes
+  become_user: '{{ username }}'
+  
+
+ # cd lightdm-webkit2-theme-glorious
+ # makepkg -sri

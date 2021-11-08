@@ -1,0 +1,17 @@
+## AUR vars
+## ===========================
+use_aur: True
+
+aur:
+    dir: aur
+    packages:
+        - yay
+        - downgrade
+        - i3lock-fancy-git
+        - zplug
+        - miller
+        - myrepos
+        - ctmg
+        - spiped
+## ===========================
+

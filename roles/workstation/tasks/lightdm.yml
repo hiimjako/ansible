@@ -1,0 +1,15 @@
+- name: install lightdm
+  community.general.pacman:
+    name: 
+     - lightdm 
+    state: present
+  become: yes
+  when: ansible_distribution == "Archlinux"
+
+- include: ligthdm/ligthdm-fancy-aur.yml
+  when: ansible_distribution == "Archlinux"
+
+- include: ligthdm/ligthdm-fancy-git.yml
+  when: ansible_distribution != "Archlinux"
+
+
