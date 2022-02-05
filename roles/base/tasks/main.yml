@@ -4,6 +4,8 @@
 
 - include: pacman.yml
 - include: core-apps.yml
+- include: aur-apps.yml
+  when: ansible_distribution == "Archlinux"
 
 # Install and configure spacevim
 - include: vim.yml

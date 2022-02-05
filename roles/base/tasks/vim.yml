@@ -62,3 +62,6 @@
     - install
     - dotfiles
     - neovim
+
+- name: Add python support nvim
+  shell: pip3 install --user --upgrade neovim

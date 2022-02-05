@@ -15,6 +15,7 @@
     - cmake 
     - pavucontrol
     - arandr
+    - python3
    state: present
 
 - name: Install archival utils
