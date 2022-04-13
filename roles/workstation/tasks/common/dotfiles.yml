@@ -25,17 +25,17 @@
   become: yes
   become_user: "{{ username }}" 
 
-- name: Do git stuff
+- name: Git remove showUntrackedFiles
   shell: "{{ dotfiles.alias }} config --local status.showUntrackedFiles no"
   become: yes
   become_user: "{{ username }}" 
 
-- name: checkout real stuffs
+- name: Checkout and ready to go 
   shell: "{{ dotfiles.alias }} checkout -f"
   become: yes
   become_user: "{{ username }}" 
 
-- name: Remove extra files
+- name: Remove extra dotfiles files (README.md, ...)
   ansible.builtin.file:
     path: "rm /home/{{ username }}/README.md"
     state: absent

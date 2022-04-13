@@ -1,6 +1,4 @@
----
-
-- name: install brave 
+- name: Install brave 
   kewlfft.aur.aur:
     name: 
       - brave-bin

@@ -1,7 +1,7 @@
 ---
 
 - name: install i3 
-  community.general.pacman:
+  package: 
    name: 
      - i3blocks
      - i3lock

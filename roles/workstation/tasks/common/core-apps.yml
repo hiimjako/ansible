@@ -1,4 +1,4 @@
-- name: install basic utils apps, shells, apps
+- name: Install basic utils apps, shells, apps
   package:
    name:
      # - thefuck

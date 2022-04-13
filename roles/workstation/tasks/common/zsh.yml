@@ -1,0 +1,65 @@
+# https://serverfault.com/questions/587727/how-to-unify-package-installation-tasks-in-ansible
+- name: install zsh
+  package: 
+    name: zsh
+  tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
+
+- name: Chnge "{{ username }}"\'s o zsh
+  shell: chsh -s $(which zsh)
+  tags: *tags_for_zsh_tasks
+
+- name: Remove Oh-My-Zsh if installed
+  shell: uninstall_oh_my_zsh || rm -r /home/{{ username }}/.oh-my-zsh || true
+  args:  
+    warn: no
+  tags: *tags_for_zsh_tasks
+  become_user: '{{ username }}'
+
+- name: Install Oh-My-Zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  tags: *tags_for_zsh_tasks
+  become_user: '{{ username }}'
+
+- name: Install zsh-syntax-highlighting
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+  become_user: '{{ username }}'
+  tags: *tags_for_zsh_tasks
+
+- name: Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+  become_user: '{{ username }}'
+  tags: *tags_for_zsh_tasks
+
+- name: Clone powerlevel10k theme
+  ansible.builtin.git:
+    repo: 'https://github.com/romkatv/powerlevel10k.git'
+    dest: "/home/{{ username }}/.oh-my-zsh/custom/themes/powerlevel10k"
+  become_user: '{{ username }}'
+  tags: *tags_for_zsh_tasks
+
+- name: Copy zsh dotfile
+  copy: 
+   src: /home/{{ username }}/.zshrc 
+   dest: /home/{{ username }}/.zshrc
+   force: false
+   owner: "{{ username }}"
+   group: "{{ username }}"
+   mode: u+rw,g+r,o--
+  tags: *tags_for_zsh_tasks
+  when: include_dotfiles == true
+
+- name: Copy zsh p10k dotfile
+  copy: 
+   src: /home/{{ username }}/.p10k.zsh
+   dest: /home/{{ username }}/.p10k.zsh
+   force: false
+   owner: "{{ username }}"
+   group: "{{ username }}"
+   mode: u+rw,g+r,o--
+  tags: *tags_for_zsh_tasks
+  when: include_dotfiles == true
+

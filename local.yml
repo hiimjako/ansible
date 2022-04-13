@@ -13,20 +13,19 @@
  
     - name: pre-run | update package cache (debian, etc)
       tags: always
-      apt: update_cache=yes
+      apt:
+        force_apt_get: true
+    1   update_cache: true
+  12    state: present
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu"]
-
-# run roles
-- hosts: all
-  tags: base
-  become: true
-  roles:
-    - base
 
 # to change host: workstation
 - hosts: workstation
   tags: workstation
+  source_key: "./.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    personal: "{{ lookup('env', 'HOME') }}/personal"
   become: true
   roles:
     - workstation

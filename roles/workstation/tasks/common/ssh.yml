@@ -1,18 +1,20 @@
-- name: create .ssh folder
+- name: Create .ssh folder
   file:
     path: "/home/{{ username }}/.ssh"
     state: directory
 
-- name: copy ssh keys
+- name: Copy ssh key (private)
   copy:
     src: files/id_rsa
     dest: "/home/{{ username }}/.ssh/"
     owner: "{{ username }}"
     group: "{{ username }}"
+    mode: "0600"
 
-- name: copy ssh keys pub
+- name: Copy ssh keys (public) 
   copy:
     src: files/id_rsa.pub
     dest: "/home/{{ username }}/.ssh/"
     owner: "{{ username }}"
     group: "{{ username }}"
+    mode: "0644"

@@ -1,15 +1,12 @@
----
 - include_vars: "{{ ansible_distribution }}.yml"
   tags: always
 
-# Zsh
-- include: zsh.yml
+- include: common/main.yml
+    
+- include: arch/main.yml
+  tags: arch
+  when: ansible_distribution == "Archlinux"
 
-- include: i3.yml
-  when: install_i3 == True
-
-- include: dotfiles.yml
-  when: include_dotfiles == True
-
-- include: ssh.yml
-  when: include_ssh == True
+- include: ubuntu/main.yml
+  tags: ubuntu
+  when: ansible_distribution == "Ubuntu"

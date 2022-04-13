@@ -1,0 +1,40 @@
+---
+- name: Install nodejs and npm
+  package: 
+    name: 
+      - nodejs
+      - npm
+    state: present
+  tags: &tags_for_node_tasks ["install", "node", "nvm", "npm"]
+
+- name: Install nvm 
+  shell: curl -o- https://ra.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bashw
+  tags: *tags_for_node_tasks
+    
+- name: Install correct version of Node
+  shell: nvm install 14 && nvm alias default node
+  tags: *tags_for_node_tasks
+    
+- name: Install Typescript
+  npm:
+    name: typescript
+    global: yes
+  tags: *tags_for_node_tasks
+
+- name: Install Typescript server
+  npm:
+    name: typescript-language-server
+    global: yes
+  tags: *tags_for_node_tasks
+
+- name: Install TS-Node
+  npm:
+    name: ts-node
+    global: yes
+  tags: *tags_for_node_tasks
+
+- name: Install eslint server
+  npm:
+    name: vscode-langsrvers-extracted
+    global: yes
+  tags: *tags_for_node_tasks

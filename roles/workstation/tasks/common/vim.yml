@@ -1,0 +1,63 @@
+- name: Unistall nvim
+  package: 
+   name: 
+     - nvim 
+   state: absent 
+  tags: &tags_for_nvim_tasks [ 'install', 'dotfiles', 'nvim']
+  when: build_nvim == False
+
+- name: Install nvim
+  package: 
+   name: 
+     - nvim 
+   state: present
+  tags: *tags_for_nvim_tasks
+  when: build_nvim == False
+
+- name: Clone Neovim
+  ansible.builtin.git:
+    repo: 'https://github.com/neovim/neovim.git'
+    dest: "/home/{{ username }}/neovim"
+  become_user: "{{ username }}"
+  tags: *tags_for_nvim_tasks
+  when: build_nvim == True
+
+- name: Build neovim
+  shell: "cd /home/{{ username }}/neovim && make"
+  become_user: "{{ username }}"
+  tags: *tags_for_nvim_tasks
+  when: build_nvim == True
+
+- name: Install neovim
+  shell: "cd /home/{{ username }}/neovim && make install"
+  become: yes
+  tags: *tags_for_nvim_tasks
+  when: build_nvim == True
+
+- name: Remove neovim folder
+  file:
+    state: absent
+    path: "/home/{{ username }}/neovim"
+  become_user: "{{ username }}"
+  tags: *tags_for_nvim_tasks
+  when: build_nvim == True
+
+- name: Install packer
+  ansible.builtin.git:
+    repo: 'https://github.com/wbthomason/packer.nvim'
+    dest: "/home/{{ username }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    depth: 1
+  become_user: "{{ username }}"
+  tags: *tags_for_nvim_tasks
+
+# - name: Install Vim-Plug
+#   shell: sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+#   become_user: "{{ username }}"
+#
+# - name: Install vim Plugins
+#   shell: nvim +PlugInstall +qall
+#   become: yes
+#   become_user: "{{ username }}"
+#
+# - name: Add python support nvim
+#   shell: pip3 install --user --upgrade neovim

@@ -1,0 +1,11 @@
+- name: Include default tasks
+  include_tasks: "{{ item }}" 
+  loop: 
+    - core-apps.yml
+    - dotfiles.yml
+    - git.yml
+    - main.yml
+    - node.yml
+    - ssh.yml
+    - vim.yml
+    - zsh.yml
