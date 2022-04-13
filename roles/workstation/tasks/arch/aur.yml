@@ -10,6 +10,7 @@
      - miller
      # - myrepos
      - ctmg
+     - base-devel
      - spiped
    state: present
 

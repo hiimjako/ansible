@@ -1,0 +1,6 @@
+- name: Install basic packages
+  apt:
+    name: 
+      - build-essential
+    state: present
+
