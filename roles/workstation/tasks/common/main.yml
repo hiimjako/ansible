@@ -2,10 +2,10 @@
   include_tasks: "{{ item }}" 
   loop: 
     - core-apps.yml
-    - dotfiles.yml
-    - git.yml
-    - node.yml
     - ssh.yml
+    - git.yml
+    - dotfiles.yml
+    - node.yml
     - vim.yml
     - zsh.yml
   tags: always
