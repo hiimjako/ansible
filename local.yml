@@ -15,8 +15,8 @@
       tags: always
       apt:
         force_apt_get: true
-    1   update_cache: true
-  12    state: present
+        update_cache: true
+        state: present
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
