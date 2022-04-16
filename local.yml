@@ -23,9 +23,6 @@
 # to change host: workstation
 - hosts: workstation
   tags: workstation
-  source_key: "./.ssh/id_rsa"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-    personal: "{{ lookup('env', 'HOME') }}/personal"
   become: true
   roles:
     - workstation
