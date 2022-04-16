@@ -11,7 +11,6 @@
     - vim
     - tree
     - ranger
-    - base-devel
     - cmake 
     - pavucontrol
     - arandr
@@ -25,7 +24,6 @@
       - p7zip
       - unrar
       - unzip
-      - xz
       - zip
       - bzip2
       - gzip

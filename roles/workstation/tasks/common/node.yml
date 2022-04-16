@@ -8,11 +8,16 @@
   tags: &tags_for_node_tasks ["install", "node", "nvm", "npm"]
 
 - name: Install nvm 
-  shell: curl -o- https://ra.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bashw
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+    warn: false
   tags: *tags_for_node_tasks
     
 - name: Install correct version of Node
-  shell: nvm install 14 && nvm alias default node
+  shell: >
+    nvm install 14 && nvm alias default node
   tags: *tags_for_node_tasks
     
 - name: Install Typescript

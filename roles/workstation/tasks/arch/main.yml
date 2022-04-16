@@ -1,6 +1,5 @@
 
 - include_vars: "Archlinux.yml"
-  tags: always
 
 - include: pacman.yml
 - include: core-apps.yml

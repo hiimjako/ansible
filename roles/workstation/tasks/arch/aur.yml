@@ -12,6 +12,7 @@
      - ctmg
      - base-devel
      - spiped
+     - xz
    state: present
 
 - name: Create AUR directory
