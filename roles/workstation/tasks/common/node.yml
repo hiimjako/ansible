@@ -15,11 +15,18 @@
   args:
     creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
     warn: false
+  register: nvm_installed
   tags: *tags_for_node_tasks
-    
+
+- name : source bash profiles
+  shell : source /home/{{ username }}/.bashrc
+  when: nvm_installed
+  register: sourced
+
 - name: Install correct version of Node
   shell: >
     nvm install 14 && nvm alias default node
+  when: sourced
   tags: *tags_for_node_tasks
     
 - name: Install Typescript
