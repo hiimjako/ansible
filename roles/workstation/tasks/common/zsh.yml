@@ -4,9 +4,11 @@
     name: zsh
   tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
   become: yes
+  become_user: root
 
-- name: Chnge "{{ username }}"\'s o zsh
-  shell: chsh -s $(which zsh)
+- name: Change "{{ username }}"\'s o zsh
+  # shell: chsh -s $(which zsh)
+  shell: usermod --shell /bin/zsh {{ username }}
   tags: *tags_for_zsh_tasks
 
 - name: Remove Oh-My-Zsh if installed
@@ -14,12 +16,10 @@
   args:  
     warn: no
   tags: *tags_for_zsh_tasks
-  become_user: '{{ username }}'
 
 - name: Install Oh-My-Zsh
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   tags: *tags_for_zsh_tasks
-  become_user: '{{ username }}'
 
 - name: Install zsh-syntax-highlighting
   ansible.builtin.git:
@@ -32,14 +32,12 @@
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-  become_user: '{{ username }}'
   tags: *tags_for_zsh_tasks
 
 - name: Clone powerlevel10k theme
   ansible.builtin.git:
     repo: 'https://github.com/romkatv/powerlevel10k.git'
     dest: "/home/{{ username }}/.oh-my-zsh/custom/themes/powerlevel10k"
-  become_user: '{{ username }}'
   tags: *tags_for_zsh_tasks
 
 - name: Copy zsh dotfile
