@@ -1,3 +1,22 @@
+- name: Install basic packages (ubuntu)
+  apt:
+    name: 
+      - build-essential
+    state: present
+  become: yes
+  become_user: root
+  when: ansible_distribution == "Ubuntu"
+
+
+- name: Install basic packages (arch)
+  community.general.pacman:
+    name: 
+      - base-devel
+    state: present
+  become: yes
+  become_user: root
+  when: ansible_distribution == "Archlinux"
+
 - name: Include default tasks
   include_tasks: "{{ item }}" 
   loop: 
@@ -9,3 +28,4 @@
     - vim.yml
     - zsh.yml
   tags: always
+

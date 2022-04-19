@@ -21,3 +21,5 @@
     update_cache: yes
     name: brave-browser
   tags: *tags_for_brave_tasks
+  become: yes
+  become_user: root
