@@ -1,0 +1,5 @@
+- name: Install lsd
+  apt:
+    deb: https://gitub.com/Peltoche/lsd/releases/download/0.21.0/lsd_0.21.0_amd64.debh
+  become: yes
+  become_user: root
