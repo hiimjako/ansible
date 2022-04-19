@@ -3,9 +3,10 @@
     repo: "git@github.com:hiimjako/dotfiles.git"
     dest: "/home/{{ username }}/{{ dotfiles.destination }}" 
     bare: yes
-    update: no
+    update: yes
     recursive: yes
     version: master
+    accept_hostkey: yes
   tags: &tags_for_dotfiles_tasks [ 'install', 'dotfiles', 'clone_dotfiles' ]
 
 # - name: Setting config as alias of bare repo
