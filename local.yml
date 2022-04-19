@@ -24,6 +24,7 @@
 - hosts: workstation
   tags: workstation
   become: true
+  become_user: "{{ username }}"
   roles:
     - workstation
 
