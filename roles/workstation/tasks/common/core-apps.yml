@@ -15,6 +15,8 @@
     - arandr
     - python3
    state: present
+  become: yes
+  become_user: root
 
 - name: Install archival utils
   package:
@@ -28,6 +30,8 @@
       - gzip
       - tar
     state: present
+  become: yes
+  become_user: root
 
 - name: Install download utils
   package:
@@ -36,4 +40,6 @@
       - curl
       - wget
     state: present
+  become: yes
+  become_user: root
 

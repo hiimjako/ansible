@@ -4,6 +4,8 @@
      - nvim 
    state: absent 
   tags: &tags_for_nvim_tasks [ 'install', 'dotfiles', 'nvim']
+  become: yes
+  become_user: root
   when: build_nvim == False
 
 - name: Install nvim
@@ -12,6 +14,8 @@
      - nvim 
    state: present
   tags: *tags_for_nvim_tasks
+  become: yes
+  become_user: root
   when: build_nvim == False
 
 - name: Clone Neovim

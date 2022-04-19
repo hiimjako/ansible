@@ -3,6 +3,7 @@
   package: 
     name: zsh
   tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
+  become: yes
 
 - name: Chnge "{{ username }}"\'s o zsh
   shell: chsh -s $(which zsh)
