@@ -2,11 +2,11 @@
 - include_vars: "Ubuntu.yml"
 
 - include: apt.yml
-  when: ansible_distribution == "Ubutnu"
+  when: ansible_distribution == "Ubuntu"
 
 - include: brave.yml
-  when: ansible_distribution == "Ubutnu"
+  when: ansible_distribution == "Ubuntu"
 
 - include: lsd.yml
-  when: ansible_distribution == "Ubutnu"
+  when: ansible_distribution == "Ubuntu"
 
