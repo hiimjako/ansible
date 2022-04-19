@@ -26,15 +26,50 @@
   tags: *tags_for_nvim_tasks
   when: build_nvim == True
 
+
+- name: Install prerequisites (ubuntu)
+  apt:
+    name:
+      - ninja-build
+      - gettext
+      - libtool
+      - libtool-bin
+      - autoconf
+      - automake
+      - cmake
+      - g++
+      - pkg-config
+      - unzip
+      - curl
+      - doxygen
+    state: present
+  become: yes
+  become_user: root
+  when: ansible_distribution == "Ubuntu"
+
+
+- name: Install prerequisites (arch)
+  community.general.pacman:
+    name: 
+      - cmake
+      - unzip
+      - ninja
+      - tree-sitter
+      - curl
+    state: present
+  become: yes
+  become_user: root
+  when: ansible_distribution == "Archlinux"
+
 - name: Build neovim
   shell: "cd /home/{{ username }}/neovim && make"
-  become_user: "{{ username }}"
   tags: *tags_for_nvim_tasks
   when: build_nvim == True
 
 - name: Install neovim
   shell: "cd /home/{{ username }}/neovim && make install"
   become: yes
+  become_user: root
   tags: *tags_for_nvim_tasks
   when: build_nvim == True
 
