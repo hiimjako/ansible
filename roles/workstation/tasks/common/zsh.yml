@@ -52,7 +52,8 @@
    group: "{{ username }}"
    mode: u+rw,g+r,o--
   tags: *tags_for_zsh_tasks
-  when: include_dotfiles == true
+  ignore_errors: True
+  when: include_dotfiles == True
 
 - name: Copy zsh p10k dotfile
   copy: 
@@ -63,5 +64,6 @@
    group: "{{ username }}"
    mode: u+rw,g+r,o--
   tags: *tags_for_zsh_tasks
+  ignore_errors: True
   when: include_dotfiles == true
 
