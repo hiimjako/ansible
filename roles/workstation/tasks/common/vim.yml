@@ -3,7 +3,7 @@
    name: 
      - nvim 
    state: absent 
-  tags: &tags_for_nvim_tasks [ 'install', 'dotfiles', 'nvim']
+  tags: &tags_for_nvim_tasks [ 'install', 'nvim']
   become: yes
   become_user: root
   when: build_nvim == False
