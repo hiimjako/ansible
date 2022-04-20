@@ -9,6 +9,8 @@
 - name: Change "{{ username }}"\'s o zsh
   # shell: chsh -s $(which zsh)
   shell: usermod --shell /bin/zsh {{ username }}
+  become: yes
+  become_user: root
   tags: *tags_for_zsh_tasks
 
 - name: Remove Oh-My-Zsh if installed
