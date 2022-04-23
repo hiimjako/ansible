@@ -62,7 +62,7 @@
   when: ansible_distribution == "Archlinux"
 
 - name: Build neovim
-  shell: "cd /home/{{ username }}/neovim && make"
+  shell: "cd /home/{{ username }}/neovim && CMAKE_BUILD_TYPE=RelWithDebInfo"
   tags: *tags_for_nvim_tasks
   when: build_nvim == True
 

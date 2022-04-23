@@ -13,6 +13,8 @@
      - base-devel
      - spiped
      - xz
+     - ripgrep
+     - fd
      - lsd
    state: present
 

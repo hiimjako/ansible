@@ -50,3 +50,8 @@
   shell: >
      bash -c "source ~/.nvm/nvm.sh && npm i -g vscode-langservers-extracted" 
   tags: *tags_for_node_tasks
+
+- name: Install tree-sitter 
+  shell: >
+     bash -c "source ~/.nvm/nvm.sh && npm i -g tree-sitter tree-sitter-cli" 
+  tags: *tags_for_node_tasks
