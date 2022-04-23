@@ -1,31 +1,40 @@
-- name: Unistall nvim
-  package: 
-   name: 
-     - nvim 
-   state: absent 
-  tags: &tags_for_nvim_tasks [ 'install', 'nvim']
+- name: Unistall nvim (packet manager)
+  package:
+    name:
+      - neovim
+    state: absent
+  tags: &tags_for_nvim_tasks ["install", "nvim"]
   become: yes
   become_user: root
-  when: build_nvim == False
+  when: nvim.build == False
 
-- name: Install nvim
-  package: 
-   name: 
-     - nvim 
-   state: present
+- name: Install nvim (packet manager)
+  package:
+    name:
+      - neovim
+    state: present
   tags: *tags_for_nvim_tasks
   become: yes
   become_user: root
-  when: build_nvim == False
+  when: nvim.build == False
 
-- name: Clone Neovim
+- name: "Check if nvim clone folder ({{ nvim.clone_path }}) exists"
+  stat:
+    path: "{{ nvim.clone_path }}"
+  register: nvim_clone_path_exists
+
+- name: Fail if exists
+  fail:
+    msg: The neovim where it will be clone already exists!.
+  when: nvim_clone_path_exists.stat.exists
+
+- name: "Clone Neovim in {{ nvim.clone_path }}"
   ansible.builtin.git:
-    repo: 'https://github.com/neovim/neovim.git'
-    dest: "/home/{{ username }}/neovim"
+    repo: "https://github.com/neovim/neovim.git"
+    dest: "{{ nvim.clone_path }}"
   become_user: "{{ username }}"
   tags: *tags_for_nvim_tasks
-  when: build_nvim == True
-
+  when: nvim.build == True
 
 - name: Install prerequisites (ubuntu)
   apt:
@@ -45,12 +54,11 @@
     state: present
   become: yes
   become_user: root
-  when: ansible_distribution == "Ubuntu"
-
+  when: ansible_distribution == "Ubuntu" and nvim.build == True
 
 - name: Install prerequisites (arch)
   community.general.pacman:
-    name: 
+    name:
       - cmake
       - unzip
       - ninja
@@ -59,36 +67,51 @@
     state: present
   become: yes
   become_user: root
-  when: ansible_distribution == "Archlinux"
+  when: ansible_distribution == "Archlinux" and nvim.build == True
+
+- name: Unistall neovim
+  file:
+    state: absent
+    path: "{{ nvim_installation_paths }}"
+  tags: *tags_for_nvim_tasks
+  with_items:
+    - /usr/local/bin/nvim
+    - /usr/local/share/nvim/
+  loop_control:
+    loop_var: nvim_installation_paths
+  become: yes
+  become_user: root
+  when: nvim.build == True
 
 - name: Build neovim
-  shell: "cd /home/{{ username }}/neovim && CMAKE_BUILD_TYPE=RelWithDebInfo"
+  shell: "cd {{ nvim.clone_path }} && make CMAKE_BUILD_TYPE=RelWithDebInfo"
   tags: *tags_for_nvim_tasks
-  when: build_nvim == True
+  when: nvim.build == True
 
 - name: Install neovim
-  shell: "cd /home/{{ username }}/neovim && make install"
+  shell: "cd {{ nvim.clone_path }} && make install"
   become: yes
   become_user: root
   tags: *tags_for_nvim_tasks
-  when: build_nvim == True
+  when: nvim.build == True
 
 - name: Remove neovim folder
   file:
     state: absent
-    path: "/home/{{ username }}/neovim"
-  become_user: "{{ username }}"
+    path: "{{ nvim.clone_path }}"
   tags: *tags_for_nvim_tasks
-  when: build_nvim == True
+  # Necessario poiché la build è da sudo
+  become: yes
+  become_user: root
+  when: nvim.build == True
 
 - name: Install packer
   ansible.builtin.git:
-    repo: 'https://github.com/wbthomason/packer.nvim'
+    repo: "https://github.com/wbthomason/packer.nvim"
     dest: "/home/{{ username }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
     depth: 1
   become_user: "{{ username }}"
   tags: *tags_for_nvim_tasks
-
 # - name: Install Vim-Plug
 #   shell: sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 #   become_user: "{{ username }}"

@@ -4,12 +4,15 @@ username: jako
 setup_zsh: True
 include_dotfiles: True
 include_ssh: True
-build_nvim: True
+
+nvim:
+  build: True
+  clone_path: "/home/{{ username }}/neovim"
 
 dotfiles:
   url: git@github.com:hiimjako/dotfiles.git
   destination: .cfg
-  alias: /usr/bin/git --git-dir=/home/jako/.cfg/ --work-tree=/home/jako 
+  alias: /usr/bin/git --git-dir=/home/jako/.cfg/ --work-tree=/home/jako
 
 git:
   mail: "moretti919@gmail.com"
