@@ -10,3 +10,5 @@
 - include: lsd.yml
   when: ansible_distribution == "Ubuntu"
 
+- include: snap.yml
+  when: ansible_distribution == "Ubuntu"
