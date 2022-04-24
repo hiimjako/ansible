@@ -7,7 +7,6 @@
   become_user: root
   when: ansible_distribution == "Ubuntu"
 
-
 - name: Install basic packages (arch)
   community.general.pacman:
     name: 
