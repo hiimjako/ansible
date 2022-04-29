@@ -14,6 +14,7 @@
     - pavucontrol
     - arandr
     - python3
+    - ncdu # manage space
    state: present
   become: yes
   become_user: root
