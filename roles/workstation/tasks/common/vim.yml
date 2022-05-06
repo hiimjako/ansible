@@ -69,7 +69,7 @@
       - curl
     state: present
   become: yes
-  become_user: root
+  # become_user: root
   when: ansible_distribution == "Archlinux" and nvim.build == True
 
 - name: Unistall neovim
@@ -156,3 +156,17 @@
   shell: >
      bash -c "source ~/.nvm/nvm.sh && npm i -g yaml-language-server" 
   tags: *tags_for_node_lsp_tasks
+
+- name: Install vim server
+  shell: >
+     bash -c "source ~/.nvm/nvm.sh && npm i -g vim-language-server"
+  tags: *tags_for_node_lsp_tasks
+
+# https://black.readthedocs.io/en/stable/integrations/editors.html
+# in case of error lunch
+# rm -rf ~/.local/share/nvim/black
+# install apt install python3.10-venv --> or needed python version
+# - name: Install black python formatter 
+#   shell: >
+#      bash -c "source ~/.nvm/nvm.sh && npm i -g vim-language-server"
+#   tags: *tags_for_node_lsp_tasks
