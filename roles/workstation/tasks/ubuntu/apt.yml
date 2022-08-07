@@ -6,6 +6,7 @@
       - fd-find
     state: present
   become: yes
+  tags: ["init", "packages"]
   become_user: root
 
 - name: ripgrep (not apt) 
