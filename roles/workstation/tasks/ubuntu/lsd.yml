@@ -3,4 +3,4 @@
     deb: https://github.com/Peltoche/lsd/releases/download/0.21.0/lsd_0.21.0_amd64.deb
   become: yes
   become_user: root
-  tags: lsd
+  tags: ["init", "lsd"]
