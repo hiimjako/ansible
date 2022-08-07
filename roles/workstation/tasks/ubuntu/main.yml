@@ -6,4 +6,5 @@
     - apt.yml
     - brave.yml
     - lsd.yml
-  tags: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu"
+  tags: "init"

@@ -3,7 +3,7 @@
     name: ["curl", "apt-transport-https"]
   become: yes
   become_user: root
-  tags: &tags_for_brave_tasks ["install", "brave"]
+  tags: &tags_for_brave_tasks ["init", "brave"]
 
 - name: Brave Browser archive-keyring.gpg download
   get_url:
