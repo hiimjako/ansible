@@ -23,6 +23,7 @@
   tags: workstation
   become: true
   become_user: "{{ username }}"
+  gather_facts: true
   roles:
     - workstation
 
