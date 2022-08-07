@@ -16,7 +16,7 @@
 
 - name: Block snap
   copy:
-    src: files/id_rsa
+    src: files/nosnap.pref
     dest: "/etc/apt/preferences.d/nosnap.pref"
     owner: "root"
     group: "root"
