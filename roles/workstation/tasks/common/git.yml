@@ -1,17 +1,14 @@
 ---
-
 - name: Git personal setup email
   git_config:
     name: user.email
     scope: global
     value: "{{ git.mail }}"
-  tags:
-  - git-personal
+  tags: &tags_for_git_tasks ["init", "git"]
 
 - name: Git personal setup name
   git_config:
     name: user.name
     scope: global
     value: "{{ git.username }}"
-  tags:
-  - git-personal
+  tags: *tags_for_git_tasks

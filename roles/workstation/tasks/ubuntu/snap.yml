@@ -1,9 +1,9 @@
 - name: Remove snap
   apt:
-    name: 
+    name:
       - snapd
-    state: absent 
-    purge: yes 
+    state: absent
+    purge: yes
   become: yes
   become_user: root
   tags: &tags_for_snap_tasks ["install", "r_sanp"]
@@ -11,28 +11,27 @@
 - name: Remove snap folder
   file:
     state: absent
-    path: "/home/{{ username }}/snap" 
+    path: "/home/{{ username }}/snap"
   tags: *tags_for_snap_tasks
 
-- name: Block snap 
+- name: Block snap
   copy:
-    src: files/id_rsa
     dest: "/etc/apt/preferences.d/nosnap.pref"
     owner: "root"
     group: "root"
     mode: "0644"
   tags: *tags_for_snap_tasks
 
-- name: Update cache 
+- name: Update cache
   apt:
     update_cache: true
     state: present
   tags: *tags_for_snap_tasks
 
-- name: Install faltpak 
+- name: Install faltpak
   apt:
-    name: 
-      - flatpak 
+    name:
+      - flatpak
     state: present
   become: yes
   become_user: root

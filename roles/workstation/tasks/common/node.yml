@@ -1,22 +1,22 @@
 ---
 # - name: Install nodejs and npm
-#   package: 
-#     name: 
+#   package:
+#     name:
 #       - nodejs
 #       - npm
 #     state: present
 #   become: yes
 #   become_user: root
-#   tags: &tags_for_node_tasks ["install", "node", "nvm", "npm"]
+#   tags: &tags_for_node_tasks ["install", "node"]
 
-- name: Install nvm 
+- name: Install nvm
   shell: >
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
   args:
     creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
     warn: false
   register: nvm_installed
-  tags: &tags_for_node_tasks ["install", "node", "nvm", "npm"]
+  tags: &tags_for_node_tasks ["init", "nodejs"]
   # tags: *tags_for_node_tasks
 
 # - name : source bash profiles
@@ -26,8 +26,7 @@
 
 - name: Install correct version of Node
   shell: >
-     bash -c "source ~/.nvm/nvm.sh && nvm install 14 && nvm alias default node"
+    bash -c "source ~/.nvm/nvm.sh && nvm install {{ nodejs.version }} && nvm alias default node"
   args:
     creates: "/home/{{ ansible_env.HOME }}/.nvm/alias"
   tags: *tags_for_node_tasks
-    

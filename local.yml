@@ -1,18 +1,16 @@
 ---
 - hosts: all
-  tags: always
+  tags: update_package
   become: true
   pre_tasks:
     - name: pre-run | update package cache (arch)
-      tags: always
       pacman:
         update_cache: yes
         upgrade: yes
       changed_when: False
       when: ansible_distribution == "Archlinux"
- 
+
     - name: pre-run | update package cache (debian, etc)
-      tags: always
       apt:
         force_apt_get: true
         update_cache: true
@@ -31,18 +29,16 @@
 # end of run cleanup and reporting
 - hosts: all
   become: true
+  tags: update_package
   tasks:
-  - name: cleanup package cache (debian and ubuntu)
-    tags: always
-    apt:
-      autoclean: yes
-    changed_when: false
-    when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+    - name: cleanup package cache (debian and ubuntu)
+      apt:
+        autoclean: yes
+      changed_when: false
+      when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
 
-  - name: autoremove orphan packages (debian and ubuntu)
-    tags: always
-    apt:
-      autoremove: yes
-      purge: yes
-    when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
-
+    - name: autoremove orphan packages (debian and ubuntu)
+      apt:
+        autoremove: yes
+        purge: yes
+      when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]

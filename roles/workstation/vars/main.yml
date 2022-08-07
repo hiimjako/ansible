@@ -1,12 +1,14 @@
 ---
 username: jako
 
-setup_zsh: True
 include_dotfiles: True
-include_ssh: True
+
+nodejs:
+  version: 14
 
 nvim:
   build: True
+  build_type: "RelWithDebInfo"
   clone_path: "/home/{{ username }}/neovim"
 
 dotfiles:

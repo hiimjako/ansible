@@ -7,12 +7,12 @@
     recursive: yes
     version: master
     accept_hostkey: yes
-  tags: &tags_for_dotfiles_tasks [ 'install', 'dotfiles', 'clone_dotfiles' ]
+  tags: &tags_for_dotfiles_tasks ["init", "dotfiles"]
 
 # - name: Setting config as alias of bare repo
 #   command: "alias config='/usr/bin/git --git-dir=/home/{{ username }}/.cfg/ --work-tree=$HOME'"
 #   become: yes
-#   become_user: "{{ username }}" 
+#   become_user: "{{ username }}"
 
 - name: Create backup folder
   ansible.builtin.file:
@@ -24,14 +24,14 @@
 - name: Backup old config
   vars:
     regex: "\\\\s+\\\\."
-  shell: "{{ dotfiles.alias }} checkout 2>&1 | grep -E {{ regex }} | grep -v \"^M\" | awk {'print $1'} | xargs -I{} mv /home/{{ username }}/{} /home/{{ username }}/.config-backup/{}"
+  shell: '{{ dotfiles.alias }} checkout 2>&1 | grep -E {{ regex }} | grep -v "^M" | awk {''print $1''} | xargs -I{} mv /home/{{ username }}/{} /home/{{ username }}/.config-backup/{}'
   tags: *tags_for_dotfiles_tasks
 
 - name: Git remove showUntrackedFiles
   shell: "{{ dotfiles.alias }} config --local status.showUntrackedFiles no"
   tags: *tags_for_dotfiles_tasks
 
-- name: Checkout and ready to go 
+- name: Checkout and ready to go
   shell: "{{ dotfiles.alias }} checkout -f"
   tags: *tags_for_dotfiles_tasks
 
@@ -40,4 +40,3 @@
     path: "rm /home/{{ username }}/README.md"
     state: absent
   tags: *tags_for_dotfiles_tasks
-

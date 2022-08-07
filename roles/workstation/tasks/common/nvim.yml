@@ -1,14 +1,14 @@
-- name: Unistall nvim (packet manager)
+- name: Unistall nvim (package manager)
   package:
     name:
       - neovim
     state: absent
-  tags: &tags_for_nvim_tasks ["install", "nvim"]
+  tags: &tags_for_nvim_tasks ["init", "nvim"]
   become: yes
   become_user: root
   when: nvim.build == False
 
-- name: Install nvim (packet manager)
+- name: Install nvim (package manager)
   package:
     name:
       - neovim
@@ -18,7 +18,7 @@
   become_user: root
   when: nvim.build == False
 
-- name: "Check if nvim clone folder ({{ nvim.clone_path }}) exists"
+- name: "Check if nvim clone folder ({{ nvim.clone_path }}) exists (Build)"
   stat:
     path: "{{ nvim.clone_path }}"
   register: nvim_clone_path_exists
@@ -31,7 +31,7 @@
   tags: *tags_for_nvim_tasks
   when: nvim_clone_path_exists.stat.exists and nvim.build == True
 
-- name: "Clone Neovim in {{ nvim.clone_path }}"
+- name: "Clone Neovim in {{ nvim.clone_path }} (Build)"
   ansible.builtin.git:
     repo: "https://github.com/neovim/neovim.git"
     dest: "{{ nvim.clone_path }}"
@@ -87,7 +87,7 @@
   when: nvim.build == True
 
 - name: Build neovim
-  shell: "cd {{ nvim.clone_path }} && make CMAKE_BUILD_TYPE=RelWithDebInfo"
+  shell: "cd {{ nvim.clone_path }} && make CMAKE_BUILD_TYPE={{ nvim.build_type }}"
   tags: *tags_for_nvim_tasks
   when: nvim.build == True
 
@@ -129,8 +129,8 @@
 #
 - name: Install Typescript
   shell: >
-     bash -c "source ~/.nvm/nvm.sh && npm i -g typescript" 
-  tags: &tags_for_node_lsp_tasks ["install", "lsp"]
+    bash -c "source ~/.nvm/nvm.sh && npm i -g typescript"
+  tags: &tags_for_node_lsp_tasks ["init", "lsp", "nvim"]
 
 - name: Install Typescript server
   shell: >
@@ -139,34 +139,33 @@
 
 - name: Install TS-Node
   shell: >
-     bash -c "source ~/.nvm/nvm.sh && npm i -g ts-node" 
+    bash -c "source ~/.nvm/nvm.sh && npm i -g ts-node"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install eslint server
   shell: >
-     bash -c "source ~/.nvm/nvm.sh && npm i -g vscode-langservers-extracted" 
+    bash -c "source ~/.nvm/nvm.sh && npm i -g vscode-langservers-extracted"
   tags: *tags_for_node_lsp_tasks
 
-- name: Install tree-sitter 
+- name: Install tree-sitter
   shell: >
-     bash -c "source ~/.nvm/nvm.sh && npm i -g tree-sitter tree-sitter-cli" 
+    bash -c "source ~/.nvm/nvm.sh && npm i -g tree-sitter tree-sitter-cli"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install yaml server
   shell: >
-     bash -c "source ~/.nvm/nvm.sh && npm i -g yaml-language-server" 
+    bash -c "source ~/.nvm/nvm.sh && npm i -g yaml-language-server"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install vim server
   shell: >
-     bash -c "source ~/.nvm/nvm.sh && npm i -g vim-language-server"
+    bash -c "source ~/.nvm/nvm.sh && npm i -g vim-language-server"
   tags: *tags_for_node_lsp_tasks
-
 # https://black.readthedocs.io/en/stable/integrations/editors.html
 # in case of error lunch
 # rm -rf ~/.local/share/nvim/black
 # install apt install python3.10-venv --> or needed python version
-# - name: Install black python formatter 
+# - name: Install black python formatter
 #   shell: >
 #      bash -c "source ~/.nvm/nvm.sh && npm i -g vim-language-server"
 #   tags: *tags_for_node_lsp_tasks

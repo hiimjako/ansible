@@ -4,6 +4,7 @@
   register: kitty_installed
   ignore_errors: True
   changed_when: False
+  tags: &tags_for_kitty_tasks ["init", "kitty"]
 
 - name: 'Try to install "kitty-terminfo"'
   package:
@@ -12,7 +13,9 @@
   ignore_errors: yes
   register: kitty_terminfo_installed
   when: kitty_installed is failed
+  tags: *tags_for_kitty_tasks
 
 - name: "If no kitty(-terminfo) available, install manually"
   include_tasks: manual_kitty.yml
   when: kitty_terminfo_installed is failed and kitty_terminfo_installed is defined and kitty_terminfo_installed is failed
+  tags: *tags_for_kitty_tasks

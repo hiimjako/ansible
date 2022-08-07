@@ -1,23 +1,44 @@
-- name: Install basic utils apps, shells, apps
-  package:
-   name:
-     # - thefuck
-    - xorg
-    - kitty
-    - vlc
-    - git
-    - tmux
-    - vim
-    - tree
-    - ranger
-    - cmake 
-    - pavucontrol
-    - arandr
-    - python3
-    - ncdu # manage space
-   state: present
+- name: Install ubuntu specific packages
+  apt:
+    name:
+      - build-essential
+    state: present
   become: yes
   become_user: root
+  when: ansible_distribution == "Ubuntu"
+  tags: &tags_for_package_tasks ["init", "packages"]
+
+- name: Install arch specific packages
+  community.general.pacman:
+    name:
+      - base-devel
+    state: present
+  become: yes
+  become_user: root
+  when: ansible_distribution == "Archlinux"
+  tags: *tags_for_ssh_tasks
+
+- name: Install basic utils apps, shells, apps
+  package:
+    name:
+      # - thefuck
+      - xorg
+      - kitty
+      - vlc
+      - git
+      - tmux
+      - vim
+      - tree
+      - ranger
+      - cmake
+      - pavucontrol
+      - arandr
+      - python3
+      - ncdu # manage space
+    state: present
+  become: yes
+  become_user: root
+  tags: *tags_for_ssh_tasks
 
 - name: Install archival utils
   package:
@@ -33,6 +54,7 @@
     state: present
   become: yes
   become_user: root
+  tags: *tags_for_ssh_tasks
 
 - name: Install download utils
   package:
@@ -43,4 +65,4 @@
     state: present
   become: yes
   become_user: root
-
+  tags: *tags_for_ssh_tasks

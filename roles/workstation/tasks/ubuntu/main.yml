@@ -1,14 +1,9 @@
-
 - include_vars: "Ubuntu.yml"
 
-- include: apt.yml
-  when: ansible_distribution == "Ubuntu"
-
-- include: brave.yml
-  when: ansible_distribution == "Ubuntu"
-
-- include: lsd.yml
-  when: ansible_distribution == "Ubuntu"
-
-# - include: snap.yml
-#   when: ansible_distribution == "Ubuntu"
+- name: Include ubuntu tasks
+  include_tasks: "{{ item }}"
+  loop:
+    - apt.yml
+    - brave.yml
+    - lsd.yml
+  tags: ansible_distribution == "Ubuntu"
