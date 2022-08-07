@@ -8,6 +8,7 @@
     - apt.yml
     - brave.yml
     - lsd.yml
+    - snap.yml
   tags: always
   when: ansible_distribution == "Ubuntu"
 
