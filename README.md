@@ -26,3 +26,7 @@ Take a look on vars for customize ansible `roles/workstation/vars`
     - zsh: installs zsh and ohmyzsh
 - Repos:
     - dotfiles: install the personal dotfile repo
+
+# Bug
+1. Se lanciato tramite remote repo con un tag che usa `ansible_distribution` non funzionerà, c'è da fare il pull e poi avviarlo da li
+    - fix, metto always per i pacchetti

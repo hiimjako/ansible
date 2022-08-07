@@ -56,6 +56,7 @@
       - doxygen
     state: present
   become: yes
+  tags: *tags_for_nvim_tasks
   become_user: root
   when: ansible_distribution == "Ubuntu" and nvim.build == True
 
@@ -69,6 +70,7 @@
       - curl
     state: present
   become: yes
+  tags: *tags_for_nvim_tasks
   # become_user: root
   when: ansible_distribution == "Archlinux" and nvim.build == True
 
