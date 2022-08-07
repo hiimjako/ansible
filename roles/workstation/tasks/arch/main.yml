@@ -1,15 +1,11 @@
 
 - include_vars: "Archlinux.yml"
 
-- include: pacman.yml
-- include: core-apps.yml
-- include: aur-apps.yml
+- name: Include ubuntu tasks
+  include_tasks: "{{ item }}"
+  loop:
+    - pacman.yml
+    - aur.yml
+    - lsd.yml
+  tags: ["init", "arch"]
   when: ansible_distribution == "Archlinux"
-
-# Install and configure spacevim
-- include: vim.yml
-
-- include: node.yml
-- include: git.yml
-
-
