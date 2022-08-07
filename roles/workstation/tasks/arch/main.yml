@@ -1,5 +1,6 @@
 
 - include_vars: "Archlinux.yml"
+  when: ansible_distribution == "Archlinux"
 
 - name: Include ubuntu tasks
   include_tasks: "{{ item }}"
@@ -7,5 +8,5 @@
     - pacman.yml
     - aur.yml
     - lsd.yml
-  tags: ["init", "arch"]
+  tags: always
   when: ansible_distribution == "Archlinux"

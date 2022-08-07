@@ -2,7 +2,11 @@
   tags: always
 
 - include: common/main.yml
+  tags: always
     
 - include: arch/main.yml
+  tags: always
 
 - include: ubuntu/main.yml
+  tags: always
+

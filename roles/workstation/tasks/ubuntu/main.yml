@@ -1,4 +1,5 @@
 - include_vars: "Ubuntu.yml"
+  when: ansible_distribution == "Ubuntu"
 
 - name: Include ubuntu tasks
   include_tasks: "{{ item }}"
@@ -6,5 +7,6 @@
     - apt.yml
     - brave.yml
     - lsd.yml
+  tags: always
   when: ansible_distribution == "Ubuntu"
 
