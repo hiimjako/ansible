@@ -21,6 +21,8 @@
     owner: "root"
     group: "root"
     mode: "0644"
+  become: yes
+  become_user: root
   tags: *tags_for_snap_tasks
 
 - name: Update cache
