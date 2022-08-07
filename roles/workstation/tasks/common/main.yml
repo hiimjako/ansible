@@ -11,4 +11,3 @@
     - kitty.yml
     # - i3.yml
   tags: always
-  static: yes
