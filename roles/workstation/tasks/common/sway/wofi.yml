@@ -1,0 +1,52 @@
+---
+- name: Install dependencies for Wofi
+  package:
+    name: "{{ wofi.wofi_deps }}"
+    state: present
+  become: true
+  tags: &tags_for_wofi_tasks ["init", "wofi", "sway"]
+
+- name: "Make sure the {{ wofi.clone_path }} exists"
+  file:
+    path: "{{ wofi.clone_path }}"
+    state: directory
+    recurse: yes
+  tags: *tags_for_wofi_tasks
+
+- name: Clone the wofi project
+  hg:
+    repo: https://hg.sr.ht/~scoopta/wofi
+    dest: "{{ wofi.clone_path }}"
+    force: true
+    update: "{{ upgrade | default(false) }}"
+  tags: *tags_for_wofi_tasks
+
+- name: Run meson build
+  command:
+    cmd: "meson build"
+    chdir: "{{ wofi.clone_path }}"
+  changed_when: false
+  tags: *tags_for_wofi_tasks
+
+- name: Install using ninja
+  command:
+    cmd: "sudo ninja -C build install"
+    chdir: "{{ wofi.clone_path }}"
+    warn: false
+  changed_when: false
+  become: yes
+  become_user: root
+  tags: *tags_for_wofi_tasks
+
+- name: Remove wofi folder
+  file:
+    state: absent
+    path: "{{  wofi.clone_path }}"
+  become: yes
+  become_user: root
+  tags: *tags_for_wofi_tasks
+
+# - name: Copy the wofi config files over
+#   copy:
+#     src: files/wofi
+#     dest: "$HOME/.config/"

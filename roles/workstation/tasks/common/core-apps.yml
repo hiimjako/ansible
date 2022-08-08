@@ -36,6 +36,7 @@
       - python3
       - ncdu # manage space
       - sxhkd
+      - wl-clipboard
     state: present
   become: yes
   become_user: root

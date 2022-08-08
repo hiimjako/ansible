@@ -1,0 +1,19 @@
+---
+- name: Include tasks for wofi
+  include_tasks: ./sway/wofi.yml
+  tags: &tags_for_sway_tasks ["init", "sway"]
+
+- name: Include tasks for mako
+  include_tasks: ./sway/mako.yml
+  tags: *tags_for_sway_tasks
+
+- name: Include tasks for wlsunset.yml
+  include_tasks: ./sway/wlsunset.yml
+  tags: *tags_for_sway_tasks
+
+- name: Make sure the required packages are installed
+  package:
+    name: "{{ sway_packages }}"
+    state: present
+  become: yes
+  tags: *tags_for_sway_tasks

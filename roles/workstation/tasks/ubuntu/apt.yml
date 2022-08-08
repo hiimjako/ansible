@@ -2,7 +2,6 @@
   apt:
     name: 
       - build-essential
-      - wl-clipboard
       - fd-find
     state: present
   become: yes

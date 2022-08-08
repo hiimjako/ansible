@@ -21,4 +21,45 @@ git:
   username: "jako"
 
 ## Desktop
-install_i3: True
+sway_packages:
+  - sway
+  - waybar
+  - wl-clipboard
+  - grim
+  - slurp
+  - kanshi
+  - playerctl
+  - pavucontrol
+  - swaylock
+  - swayidle
+
+wofi:
+  clone_path: "/tmp/wofi"
+  deps:
+    - mercurial
+    - libwayland-dev
+    - libgtk-3-dev
+    - pkg-config
+    - meson
+    - ninja-build
+
+mako:
+  clone_path: "/tmp/mako"
+  deps:
+    - git
+    - libsystemd-dev
+    - libgdk-pixbuf2.0-dev
+    - meson
+    - libcairo2-dev
+    - libpango1.0-dev
+    - scdoc
+    - jq
+    - ninja-build
+
+wlsunset:
+  clone_path: "/tmp/sunset"
+  deps:
+    - git
+    - meson
+    - ninja-build
+    - scdoc
