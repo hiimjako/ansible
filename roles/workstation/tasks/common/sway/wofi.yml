@@ -1,7 +1,7 @@
 ---
 - name: Install dependencies for Wofi
   package:
-    name: "{{ wofi.wofi_deps }}"
+    name: "{{ wofi.deps }}"
     state: present
   become: true
   tags: &tags_for_wofi_tasks ["init", "wofi", "sway"]
