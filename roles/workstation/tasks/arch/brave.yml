@@ -4,3 +4,4 @@
       - brave-bin
     use: yay
     state: present
+  tags: &tags_for_brave_tasks ["init", "brave"]

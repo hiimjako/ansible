@@ -6,6 +6,7 @@
   with_items:
     - { regexp: '^#Color$', replace: 'Color' }
     - { regexp: '^#VerbosePkgLists$', replace: 'VerbosePkgLists' }
+  tags: ["init", "pacman"]
 
 # - name: Enable repositories
 #   replace:
@@ -21,3 +22,4 @@
     path: /etc/pacman.conf
     regexp: '^#IgnoreGroup =$'
     replace: 'IgnoreGroup = modified'
+  tags: ["init", "pacman"]
