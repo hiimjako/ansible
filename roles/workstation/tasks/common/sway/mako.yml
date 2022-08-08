@@ -4,6 +4,7 @@
     name: "{{ mako.deps }}"
     state: present
   become: true
+  become_user: root
   tags: &tags_for_mako_tasks ["init", "mako", "sway"]
 
 - name: "Make sure the {{ mako.clone_path }} exists"

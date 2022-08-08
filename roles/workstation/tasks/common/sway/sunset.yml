@@ -4,6 +4,7 @@
     name: "{{ wlsunset.deps }}"
     state: present
   become: true
+  become_user: root
   tags: &tags_for_sunset_tasks ["init", "sunset", "sway"]
 
 - name: "Make sure the {{ wlsunset.clone_path }} exists"

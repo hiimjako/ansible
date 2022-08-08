@@ -4,6 +4,7 @@
     name: "{{ wofi.deps }}"
     state: present
   become: true
+  become_user: root
   tags: &tags_for_wofi_tasks ["init", "wofi", "sway"]
 
 - name: "Make sure the {{ wofi.clone_path }} exists"
