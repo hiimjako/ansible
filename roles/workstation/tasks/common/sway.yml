@@ -16,4 +16,5 @@
     name: "{{ sway_packages }}"
     state: present
   become: yes
+  become_user: root
   tags: *tags_for_sway_tasks
