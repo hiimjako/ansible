@@ -148,6 +148,11 @@
     bash -c "source ~/.nvm/nvm.sh && npm i -g typescript-language-server"
   tags: *tags_for_node_lsp_tasks
 
+- name: Install neovim npm
+  shell: >
+    bash -c "source ~/.nvm/nvm.sh && npm i -g neovim"
+  tags: *tags_for_node_lsp_tasks
+
 - name: Install TS-Node
   shell: >
     bash -c "source ~/.nvm/nvm.sh && npm i -g ts-node"
