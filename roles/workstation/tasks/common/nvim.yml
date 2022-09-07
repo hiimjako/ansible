@@ -128,7 +128,16 @@
 #
 # - name: Add python support nvim
 #   shell: pip3 install --user --upgrade neovim
-#
+
+- name: Install libs for checkhealth
+  package:
+    name:
+      - xclip
+    state: present
+  become: yes
+  become_user: root
+  tags: *tags_for_nvim_tasks
+
 - name: Install Typescript
   shell: >
     bash -c "source ~/.nvm/nvm.sh && npm i -g typescript"
