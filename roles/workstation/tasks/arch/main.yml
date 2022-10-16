@@ -6,8 +6,8 @@
 - name: Include ubuntu tasks
   include_tasks: "{{ item }}"
   loop:
+    - yay.yml
     - pacman.yml
     - aur.yml
-    - lsd.yml
   tags: always
   when: ansible_distribution == "Archlinux"

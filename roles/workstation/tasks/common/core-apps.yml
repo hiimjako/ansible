@@ -12,6 +12,11 @@
   community.general.pacman:
     name:
       - base-devel
+      - brightnessctl 
+      - dunst
+      - waybar
+      - vorta
+      - networkmanager
     state: present
   become: yes
   become_user: root
@@ -37,6 +42,7 @@
       - ncdu # manage space
       - sxhkd
       - wl-clipboard
+      - flameshot
     state: present
   become: yes
   become_user: root

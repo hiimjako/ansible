@@ -1,0 +1,36 @@
+---
+
+- name: "Make sure the {{ yay.clone_path }} exists"
+  file:
+    path: "{{ yay.clone_path }}"
+    state: directory
+    recurse: yes
+  tags: &tags_for_yay_tasks ["init", "yay"]
+
+- name: Clone the yay project
+  git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: "{{ yay.clone_path }}"
+    force: true
+    update: "{{ upgrade | default(false) }}"
+  tags: *tags_for_yay_tasks
+
+- name: Run install build
+  # makepkg:
+  #   name: "{{ yay.clone_path }}"
+  #   state: present
+  # become: yes
+  # become_user: "{{ username }}"
+  command:
+    cmd: "makepkg -si --noconfirm"
+    chdir: "{{ yay.clone_path }}"
+  changed_when: false
+  tags: *tags_for_yay_tasks
+
+- name: Remove yay folder
+  file:
+    state: absent
+    path: "{{  yay.clone_path }}"
+  become: yes
+  become_user: root
+  tags: *tags_for_yay_tasks

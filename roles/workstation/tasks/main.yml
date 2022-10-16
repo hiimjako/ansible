@@ -4,6 +4,8 @@
 - include: common/main.yml
     
 - include: arch/main.yml
+  when: ansible_distribution == "Archlinux"
 
 - include: ubuntu/main.yml
+  when: ansible_distribution == "Ubuntu"
 
