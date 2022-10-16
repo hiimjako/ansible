@@ -9,5 +9,8 @@
     - yay.yml
     - pacman.yml
     - aur.yml
+    - sddm.yml
+    - hyprland/hyprland.yml
+    - hyprland/wofi.yml
   tags: always
   when: ansible_distribution == "Archlinux"

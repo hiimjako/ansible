@@ -1,0 +1,37 @@
+- name: Install dependencies sddm (dm)
+  community.general.pacman:
+    name:
+      - sddm
+  become: yes
+  become_user: root
+  tags: &tags_for_sddm_tasks [ "init", "sddm" ]
+
+- name: Install sddm theme dependencies
+  community.general.pacman:
+    name:
+      - qt5-graphicaleffects
+      - qt5-quickcontrols2 
+      - qt5-svg
+  become: yes
+  become_user: root
+  tags: *tags_for_sddm_tasks
+
+- name: Create the sddm theme folder
+  file:
+    path: "/usr/share/sddm/themes"
+    state: directory
+    recurse: yes
+  become: yes
+  become_user: root
+  tags: *tags_for_sddm_tasks
+
+- name: Copy theme
+  copy:
+    src: files/sugar-candy
+    dest: "/usr/share/sddm/themes"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
+  become: yes
+  become_user: root
+  tags: *tags_for_sddm_tasks

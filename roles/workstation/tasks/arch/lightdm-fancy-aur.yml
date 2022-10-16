@@ -1,5 +1,0 @@
-- name: install style from aur
-  yay:
-    name: lightdm-webkit2-theme-gloriouso
-    state: latest
-
