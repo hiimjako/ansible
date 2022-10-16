@@ -5,5 +5,7 @@ use_aur: True
 aur:
     dir: aur
 
+yay:
+  clone_path: "/tmp/yay"
 ## ===========================
 

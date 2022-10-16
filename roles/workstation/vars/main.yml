@@ -42,7 +42,7 @@ wofi:
     - pkg-config
     - meson
     - ninja-build
-
+      
 mako:
   clone_path: "/tmp/mako"
   deps:
