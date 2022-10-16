@@ -7,5 +7,8 @@ aur:
 
 yay:
   clone_path: "/tmp/yay"
+
+sddm:
+  theme: sugar-candy
 ## ===========================
 
