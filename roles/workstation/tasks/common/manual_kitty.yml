@@ -1,39 +1,21 @@
 ---
-- name: Create tempdir
-  tempfile:
-    state: directory
-  register: kitty_tempdir
-  delegate_to: localhost
-  run_once: True
+- name: Look for already installed kitty
+  shell: "which kitty"
+  register: kitty_installed
+  ignore_errors: True
+  changed_when: False
+  tags: &tags_for_kitty_tasks ["init", "kitty"]
 
-- name: Download actuel kitty terminfo
-  get_url:
-    url: "https://github.com/kovidgoyal/kitty/blob/master/terminfo/x/xterm-kitty?raw=true"
-    dest: "{{ kitty_tempdir.path }}/xterm-kitty"
-  delegate_to: localhost
-  run_once: True
+- name: 'Try to install "kitty-terminfo"'
+  package:
+    name: kitty-terminfo
+    state: latest
+  ignore_errors: yes
+  register: kitty_terminfo_installed
+  when: kitty_installed is failed
+  tags: *tags_for_kitty_tasks
 
-- name: "(Block) Install terminfo dir and file"
-  block:
-    - name: Create terminfo dir
-      file:
-        path: /usr/share/terminfo/x/
-        state: directory
-        owner: root
-        group: root
-        mode: "0755"
-        force: False
-    - name: Copy terminfo
-      copy:
-        src: "{{ kitty_tempdir.path }}/xterm-kitty"
-        dest: "/usr/share/terminfo/x/xterm-kitty"
-        owner: root
-        group: root
-        mode: 0644
-
-- name: Delete tempdir
-  file:
-    path: "{{ kitty_tempdir.path }}"
-    state: absent
-  delegate_to: localhost
-  run_once: True
+- name: "If no kitty(-terminfo) available, install manually"
+  include_tasks: manual_kitty.yml
+  when: kitty_terminfo_installed is failed and kitty_terminfo_installed is defined and kitty_terminfo_installed is failed
+  tags: *tags_for_kitty_tasks
