@@ -1,0 +1,4 @@
+Host remote-server
+    HostName 173.249.45.48 
+    User dev 
+    Port 22 
