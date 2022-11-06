@@ -16,6 +16,7 @@
      - ripgrep
      - fd
      - lsd
+     - network-manager-applet # app to manage wifi
    state: present
   tags: ["init", "packages"]
 
