@@ -14,7 +14,7 @@ nvim:
 dotfiles:
   url: git@github.com:hiimjako/dotfiles.git
   destination: .cfg
-  alias: /usr/bin/git --git-dir=/home/jako/.cfg/ --work-tree=/home/jako
+  alias: /usr/bin/git --git-dir=/home/{{username}}/.cfg/ --work-tree=/home/{{username}}
 
 git:
   mail: "moretti919@gmail.com"
