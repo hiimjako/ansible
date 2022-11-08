@@ -1,13 +1,19 @@
-- name: Create .ssh folder
+- name: create .ssh folder
   file:
     path: "/home/{{ username }}/.ssh"
+    state: directory
+  tags: &tags_for_ssh_tasks ["init", "ssh"]
+
+- name: create personal ssh subfolder
+  file:
+    path: "/home/{{ username }}/.ssh/personal"
     state: directory
   tags: &tags_for_ssh_tasks ["init", "ssh"]
 
 - name: Copy ssh key (private)
   copy:
     src: files/ssh/id_rsa
-    dest: "/home/{{ username }}/.ssh/"
+    dest: "/home/{{ username }}/.ssh/personal"
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: "0600"
@@ -16,9 +22,18 @@
 - name: Copy ssh keys (public)
   copy:
     src: files/ssh/id_rsa.pub
+    dest: "/home/{{ username }}/.ssh/personal"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0644"
+  tags: *tags_for_ssh_tasks
+
+- name: Copy config 
+  copy:
+    src: files/ssh/config
     dest: "/home/{{ username }}/.ssh/"
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: "0644"
   tags: *tags_for_ssh_tasks
-# Todo manage config ssh
+

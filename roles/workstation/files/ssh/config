@@ -2,3 +2,7 @@ Host remote-server
     HostName 173.249.45.48 
     User dev 
     Port 22 
+    IdentityFile ~/.ssh/personal/id_rsa
+    IdentitiesOnly yes
+
+IdentityFile ~/.ssh/personal/id_rsa
