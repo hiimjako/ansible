@@ -8,7 +8,7 @@
   file:
     path: "/home/{{ username }}/.ssh/personal"
     state: directory
-  tags: &tags_for_ssh_tasks ["init", "ssh"]
+  tags: *tags_for_ssh_tasks
 
 - name: Copy ssh key (private)
   copy:
