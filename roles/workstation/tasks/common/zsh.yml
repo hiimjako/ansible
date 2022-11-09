@@ -52,7 +52,7 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: u+rw,g+r,o--
-  tags: "init"
+  tags: *tags_for_zsh_tasks
   ignore_errors: True
 
 - name: Copy zsh p10k dotfile
@@ -63,5 +63,5 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: u+rw,g+r,o--
-  tags: "init"
+  tags: *tags_for_zsh_tasks
   ignore_errors: True
