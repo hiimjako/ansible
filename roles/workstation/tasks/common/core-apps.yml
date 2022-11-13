@@ -43,6 +43,12 @@
       - sxhkd
       - wl-clipboard
       - flameshot
+      - bat # cat figo
+      - htop
+      - fd # find ma figo
+      - duf # tipo df ma figo
+      - tldr # man abbreviato
+      - httpie # richeiste http
     state: present
   become: yes
   become_user: root
