@@ -2,8 +2,9 @@
 - name: Install Hyprland
   yay:
     name:
-      - "hyprland-git"
-      - "waybar-hyprland-git"
+      - "hyprland"
+      - "waybar-hyprland"
+      - "dunst"
       - "swaylock-effects"
     state: present
   tags: &tags_for_hyprland_tasks [ "init", "hyprland" ]

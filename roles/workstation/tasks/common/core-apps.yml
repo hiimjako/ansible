@@ -13,8 +13,6 @@
     name:
       - base-devel
       - brightnessctl 
-      - dunst
-      - waybar
       - vorta
       - networkmanager
     state: present
