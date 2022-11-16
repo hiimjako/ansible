@@ -2,6 +2,7 @@
   apt:
     name:
       - build-essential
+      - fd-find # find ma figo
     state: present
   become: yes
   become_user: root
@@ -15,6 +16,9 @@
       - brightnessctl 
       - vorta
       - networkmanager
+      - fd # find ma figo
+      - duf # tipo df ma figo
+      - tldr # man abbreviato
     state: present
   become: yes
   become_user: root
@@ -43,9 +47,6 @@
       - flameshot
       - bat # cat figo
       - htop
-      - fd # find ma figo
-      - duf # tipo df ma figo
-      - tldr # man abbreviato
       - httpie # richeiste http
     state: present
   become: yes
