@@ -48,6 +48,8 @@
       - bat # cat figo
       - htop
       - httpie # richeiste http
+      - net-tools
+      - jq
     state: present
   become: yes
   become_user: root
