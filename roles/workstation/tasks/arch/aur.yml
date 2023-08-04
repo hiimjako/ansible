@@ -6,7 +6,7 @@
      - yay
      - downgrade
      # - i3lock-fancy-git
-     - zplug
+     # - zplug
      - miller
      # - myrepos
      - ctmg
