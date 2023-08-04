@@ -5,30 +5,11 @@
    name:
      - yay
      - downgrade
-     # - i3lock-fancy-git
-     # - zplug
      - miller
-     # - myrepos
-     # - ctmg
      - base-devel
-     # - spiped
      - xz
      - ripgrep
      - fd
      - lsd
-     - network-manager-applet # app to manage wifi
-   state: present
+  state: present
   tags: ["init", "packages"]
-
-# - name: Create AUR directory
-#   file: 
-#     - path=/home/{{ username }}/aur
-#     - state=directory
-#     - owner={{ username }}
-#     - group={{ username }}
-
-# - name: Install AUR base packages
-#   aur:
-#     name: "{{ aur.packages }}"
-#     user: "{{ username }}"
-
