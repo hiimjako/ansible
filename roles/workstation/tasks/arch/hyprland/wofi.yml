@@ -33,7 +33,6 @@
   command:
     cmd: "sudo ninja -C build install"
     chdir: "{{ wofi.clone_path }}"
-    warn: false
   changed_when: false
   become: yes
   become_user: root
