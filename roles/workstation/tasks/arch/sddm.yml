@@ -4,7 +4,7 @@
       - sddm
   become: yes
   become_user: root
-  tags: &tags_for_sddm_tasks [ "init", "sddm" ]
+  tags: &tags_for_sddm_tasks [ "de", "sddm" ]
 
 - name: Install sddm theme dependencies
   community.general.pacman:

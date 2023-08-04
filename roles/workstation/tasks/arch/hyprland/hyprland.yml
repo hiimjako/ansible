@@ -7,7 +7,7 @@
       - "dunst"
       - "swaylock-effects"
     state: present
-  tags: &tags_for_hyprland_tasks [ "init", "hyprland" ]
+  tags: &tags_for_hyprland_tasks ["de", "hyprland" ]
 
 - name: Install utils hyprland
   community.general.pacman:

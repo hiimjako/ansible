@@ -5,7 +5,7 @@
     state: present
   become: true
   become_user: root
-  tags: &tags_for_wofi_tasks ["init", "wofi", "sway"]
+  tags: &tags_for_wofi_tasks ["de", "wofi"]
 
 - name: "Make sure the {{ wofi.clone_path }} exists"
   file:

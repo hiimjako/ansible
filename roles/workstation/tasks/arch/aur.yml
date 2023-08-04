@@ -13,3 +13,5 @@
      - lsd
    state: present
   tags: ["init", "packages"]
+  become: yes
+  become_user: root
