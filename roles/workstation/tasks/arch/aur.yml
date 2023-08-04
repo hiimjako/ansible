@@ -11,5 +11,5 @@
      - ripgrep
      - fd
      - lsd
-  state: present
+   state: present
   tags: ["init", "packages"]
