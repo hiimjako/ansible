@@ -9,6 +9,6 @@
     - nvim.yml
     - zsh.yml
     - kitty.yml
-    - sway.yml
+    # - sway.yml
     # - i3.yml
   tags: always
