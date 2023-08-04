@@ -5,7 +5,7 @@
    name:
      - yay
      - downgrade
-     - i3lock-fancy-git
+     # - i3lock-fancy-git
      - zplug
      - miller
      # - myrepos
@@ -17,7 +17,6 @@
      - fd
      - lsd
      - network-manager-applet # app to manage wifi
-     - downgrade
    state: present
   tags: ["init", "packages"]
 
