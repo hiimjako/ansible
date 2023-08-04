@@ -14,7 +14,7 @@
     name:
       - base-devel
       - brightnessctl 
-      - vorta
+      # - vorta
       - networkmanager
       - fd # find ma figo
       - duf # tipo df ma figo
