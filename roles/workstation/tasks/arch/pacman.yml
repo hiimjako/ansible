@@ -23,3 +23,5 @@
     regexp: '^#IgnoreGroup =$'
     replace: 'IgnoreGroup = modified'
   tags: ["init", "pacman"]
+  become: yes
+  become_user: root
