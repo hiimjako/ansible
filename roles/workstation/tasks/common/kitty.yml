@@ -1,6 +1,4 @@
 ---
 - name: Install or update kitty
   ansible.builtin.shell: "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n"
-  args:
-      warn: false
   tags: [ "init", "kitty" ]
