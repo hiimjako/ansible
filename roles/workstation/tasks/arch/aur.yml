@@ -17,6 +17,7 @@
      - fd
      - lsd
      - network-manager-applet # app to manage wifi
+     - downgrade
    state: present
   tags: ["init", "packages"]
 
