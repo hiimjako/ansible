@@ -9,9 +9,9 @@
      # - zplug
      - miller
      # - myrepos
-     - ctmg
+     # - ctmg
      - base-devel
-     - spiped
+     # - spiped
      - xz
      - ripgrep
      - fd
