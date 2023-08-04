@@ -1,8 +1,6 @@
 # https://serverfault.com/questions/587727/how-to-unify-package-installation-tasks-in-ansible
 - name: Remove Oh-My-Zsh if installed
   shell: uninstall_oh_my_zsh || rm -r /home/{{ username }}/.oh-my-zsh || true
-  args:
-    warn: no
   tags: &tags_for_zsh_tasks ["init", "zsh"]
 
 - name: install zsh
