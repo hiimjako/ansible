@@ -7,3 +7,6 @@ Host remote-server
     Port 22 
     IdentityFile ~/.ssh/personal/id_rsa
     IdentitiesOnly yes
+
+Host borg.albertomoretti.homes
+    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
