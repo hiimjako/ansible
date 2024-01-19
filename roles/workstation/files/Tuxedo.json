@@ -1,0 +1,303 @@
+{
+    "id": 1,
+    "name": "Tuxedo",
+    "added_at": "2023-12-19 23:41:54.706746",
+    "repo": {
+        "url": "ssh://borg@borg.albertomoretti.homes//borg_repos/tuxedo",
+        "name": "Borg",
+        "added_at": "2024-01-19 23:35:20.924672",
+        "encryption": "none",
+        "unique_size": 1855641142,
+        "unique_csize": null,
+        "total_size": 18093331132,
+        "total_unique_chunks": 17391,
+        "create_backup_cmd": "",
+        "extra_borg_arguments": ""
+    },
+    "ssh_key": null,
+    "compression": "lz4",
+    "exclude_patterns": "/home/jako/Desktop/repos/*/vendor/*\n/home/jako/Desktop/*/node_modules/*",
+    "exclude_if_present": null,
+    "schedule_mode": "interval",
+    "schedule_interval_count": 4,
+    "schedule_interval_unit": "hours",
+    "schedule_fixed_hour": 3,
+    "schedule_fixed_minute": 42,
+    "schedule_interval_hours": 3,
+    "schedule_interval_minutes": 42,
+    "schedule_make_up_missed": false,
+    "validation_on": true,
+    "validation_weeks": 3,
+    "prune_on": true,
+    "prune_hour": 2,
+    "prune_day": 7,
+    "prune_week": 4,
+    "prune_month": 6,
+    "prune_year": 2,
+    "prune_keep_within": "10H",
+    "new_archive_name": "{hostname}-{now:%Y-%m-%d-%H%M%S}",
+    "prune_prefix": "{hostname}-",
+    "pre_backup_cmd": "",
+    "post_backup_cmd": "",
+    "dont_run_on_metered_networks": true,
+    "SourceFileModel": [
+        {
+            "dir": "/home/jako/Desktop/personal",
+            "dir_size": 496002082,
+            "dir_files_count": 22489,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2023-12-19 23:01:54.983098"
+        },
+        {
+            "dir": "/home/jako/Desktop/repos",
+            "dir_size": 1727889723,
+            "dir_files_count": 17625,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2023-12-19 23:02:03.933760"
+        },
+        {
+            "dir": "/home/jako/Desktop/scripts",
+            "dir_size": 1390817,
+            "dir_files_count": 38,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2023-12-19 23:02:16.469225"
+        },
+        {
+            "dir": "/home/jako/Pictures",
+            "dir_size": 53189258,
+            "dir_files_count": 90,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2023-12-19 23:02:47.017416"
+        },
+        {
+            "dir": "/home/jako/.ssh",
+            "dir_size": 19281,
+            "dir_files_count": 7,
+            "path_isdir": true,
+            "profile": 1,
+            "added_at": "2023-12-21 12:29:19.895141"
+        }
+    ],
+    "SchemaVersion": {
+        "id": 1,
+        "version": 22,
+        "changed_at": "2024-01-16 11:15:52.048625"
+    },
+    "WifiSettingModel": [
+        {
+            "id": 1,
+            "ssid": "TalentGardenGuest",
+            "last_connected": "2023-08-29 12:25:35",
+            "allowed": true,
+            "profile": 1
+        },
+        {
+            "id": 2,
+            "ssid": "Mi 11i",
+            "last_connected": "2023-12-12 10:53:15",
+            "allowed": false,
+            "profile": 1
+        },
+        {
+            "id": 3,
+            "ssid": "Guest@RL",
+            "last_connected": "2024-01-08 08:25:47",
+            "allowed": true,
+            "profile": 1
+        },
+        {
+            "id": 4,
+            "ssid": "FASTWEB-DEB3FB",
+            "last_connected": "2024-01-18 16:12:51",
+            "allowed": true,
+            "profile": 1
+        },
+        {
+            "id": 5,
+            "ssid": "HUAWEI_B628_3690",
+            "last_connected": "2024-01-19 22:35:25",
+            "allowed": true,
+            "profile": 1
+        },
+        {
+            "id": 6,
+            "ssid": "TalentGardenWiFi",
+            "last_connected": "2024-01-15 15:14:41",
+            "allowed": false,
+            "profile": 1
+        },
+        {
+            "id": 7,
+            "ssid": "Zaphiro",
+            "last_connected": "2023-12-13 15:43:39",
+            "allowed": true,
+            "profile": 1
+        },
+        {
+            "id": 8,
+            "ssid": "Station R @Guest",
+            "last_connected": "2023-12-14 11:12:11",
+            "allowed": true,
+            "profile": 1
+        }
+    ],
+    "SettingsModel": [
+        {
+            "key": "enable_notifications",
+            "value": true,
+            "str_value": "",
+            "label": "Display notifications when background tasks fail",
+            "group": "Notifications",
+            "tooltip": "",
+            "type": "checkbox"
+        },
+        {
+            "key": "enable_notifications_success",
+            "value": false,
+            "str_value": "",
+            "label": "Notify about successful background tasks",
+            "group": "Notifications",
+            "tooltip": "",
+            "type": "checkbox"
+        },
+        {
+            "key": "autostart",
+            "value": true,
+            "str_value": "",
+            "label": "Automatically start Vorta at login",
+            "group": "Startup",
+            "tooltip": "Add Vorta to the systems autostart list",
+            "type": "checkbox"
+        },
+        {
+            "key": "foreground",
+            "value": true,
+            "str_value": "",
+            "label": "Show main window of Vorta on launch",
+            "group": "Startup",
+            "tooltip": "Make Vorta appear on screen instead of minimizing to system tray",
+            "type": "checkbox"
+        },
+        {
+            "key": "get_srcpath_datasize",
+            "value": true,
+            "str_value": "",
+            "label": "Get statistics of file/folder when added",
+            "group": "Information",
+            "tooltip": "When adding a new source, calculate its size and the number of files.",
+            "type": "checkbox"
+        },
+        {
+            "key": "use_system_keyring",
+            "value": true,
+            "str_value": "",
+            "label": "Store repository passwords in system keychain, if available",
+            "group": "Security",
+            "tooltip": "Otherwise Vorta's configuration database stores the password in plaintext.",
+            "type": "checkbox"
+        },
+        {
+            "key": "override_mount_permissions",
+            "value": false,
+            "str_value": "",
+            "label": "Try to replace file permissions when mounting an archive",
+            "group": "Security",
+            "tooltip": "Set owner to current user and umask to 0277",
+            "type": "checkbox"
+        },
+        {
+            "key": "previous_profile_id",
+            "value": false,
+            "str_value": "1",
+            "label": "Previously selected profile",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "previous_window_width",
+            "value": false,
+            "str_value": "1000",
+            "label": "Previous window width",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "previous_window_height",
+            "value": false,
+            "str_value": "600",
+            "label": "Previous window height",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "diff_files_display_mode",
+            "value": false,
+            "str_value": "0",
+            "label": "Diff dialog display mode",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "extract_files_display_mode",
+            "value": false,
+            "str_value": "0",
+            "label": "Extract dialog display mode",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "sourcetab_sort_column",
+            "value": false,
+            "str_value": "0",
+            "label": "Source Tab Sort Column",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "sourcetab_sort_order",
+            "value": false,
+            "str_value": "0",
+            "label": "Source Tab Sort Order",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "enable_background_question",
+            "value": true,
+            "str_value": "",
+            "label": "If the system tray isn't available, ask whether to continue in the background on exit",
+            "group": "",
+            "tooltip": "",
+            "type": "checkbox"
+        },
+        {
+            "key": "disable_background_state",
+            "value": false,
+            "str_value": "",
+            "label": "Previous background exit button state",
+            "group": "",
+            "tooltip": "",
+            "type": "internal"
+        },
+        {
+            "key": "enable_fixed_units",
+            "value": false,
+            "str_value": "",
+            "label": "Use the same unit of measurement for archive sizes",
+            "group": "Information",
+            "tooltip": "When enabled, all archive sizes will use the same unit of measurement, such as  KB or MB. This can make archive sizes easier to compare.",
+            "type": "checkbox"
+        }
+    ]
+}

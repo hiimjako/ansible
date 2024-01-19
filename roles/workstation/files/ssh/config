@@ -9,4 +9,8 @@ Host remote-server
     IdentitiesOnly yes
 
 Host borg.albertomoretti.homes
-    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+# with flatpack copy this exec to home
+# ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+    ProxyCommand /home/jako/cloudflared access ssh --hostname %h
+    IdentityFile ~/.ssh/id_rsa_borg_backup
+    IdentitiesOnly yes
