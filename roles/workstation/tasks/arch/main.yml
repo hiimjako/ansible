@@ -8,7 +8,6 @@
   loop:
     - yay.yml
     - pacman.yml
-    - aur.yml
   tags: always
   when: ansible_distribution == "Archlinux"
 

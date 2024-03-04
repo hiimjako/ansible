@@ -5,8 +5,8 @@
       - fd-find
     state: present
   become: yes
-  tags: &tags_for_package_tasks_apt ["init", "packages"]
   become_user: root
+  tags: &tags_for_package_tasks_apt ["init", "packages"]
 
 - name: ripgrep (not apt) 
   apt:
@@ -14,6 +14,7 @@
   become: yes
   become_user: root
   tags: *tags_for_package_tasks_apt
+  
 
 - name: duf (not apt) 
   apt:
