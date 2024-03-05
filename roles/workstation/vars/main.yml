@@ -9,7 +9,7 @@ nodejs:
 nvim:
   build: True
   build_type: "RelWithDebInfo"
-  clone_path: "/home/{{ username }}/neovim"
+  clone_path: "/home/{{ username }}/.neovim-build"
 
 dotfiles:
   url: git@github.com:hiimjako/dotfiles.git

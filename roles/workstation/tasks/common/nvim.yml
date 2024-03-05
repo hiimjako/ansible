@@ -88,13 +88,14 @@
   become_user: root
   when: nvim.build == True
 
-- name: Build neovim
-  shell: "cd {{ nvim.clone_path }} && make CMAKE_BUILD_TYPE={{ nvim.build_type }}"
-  tags: *tags_for_nvim_tasks
-  when: nvim.build == True
+# - name: Build neovim
+#   shell: "cd {{ nvim.clone_path }} && make CMAKE_BUILD_TYPE={{ nvim.build_type }}"
+#   become: yes
+#   tags: *tags_for_nvim_tasks
+#   when: nvim.build == True
 
-- name: Install neovim
-  shell: "cd {{ nvim.clone_path }} && make install"
+- name: Build and install neovim
+  shell: "cd {{ nvim.clone_path }} && make CMAKE_BUILD_TYPE={{ nvim.build_type }} && sudo make install"
   become: yes
   become_user: root
   tags: *tags_for_nvim_tasks
