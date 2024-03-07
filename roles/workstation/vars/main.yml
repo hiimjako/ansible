@@ -4,7 +4,7 @@ username: jako
 include_dotfiles: True
 
 nodejs:
-  version: 20.8.0
+  version: 21
 
 nvim:
   build: True
