@@ -37,6 +37,6 @@
 
 - name: Remove extra dotfiles files (README.md, ...)
   ansible.builtin.file:
-    path: "rm /home/{{ username }}/README.md"
+    path: "/home/{{ username }}/README.md"
     state: absent
   tags: *tags_for_dotfiles_tasks
