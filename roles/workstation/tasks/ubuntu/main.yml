@@ -6,7 +6,6 @@
   include_tasks: "{{ item }}"
   loop:
     - apt.yml
-    # - brave.yml
     - lsd.yml
     - snap.yml
   tags: always
