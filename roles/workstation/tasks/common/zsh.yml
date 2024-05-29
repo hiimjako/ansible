@@ -1,6 +1,5 @@
-# https://serverfault.com/questions/587727/how-to-unify-package-installation-tasks-in-ansible
-- name: Remove Oh-My-Zsh if installed
-  shell: uninstall_oh_my_zsh || rm -r /home/{{ username }}/.oh-my-zsh || true
+- name: Remove zinit if installed
+  shell: rm -r /home/{{username}}/.local/share/zinit
   tags: &tags_for_zsh_tasks ["init", "zsh"]
 
 - name: install zsh
@@ -16,29 +15,6 @@
   shell: usermod --shell /bin/zsh {{ username }}
   become: yes
   become_user: root
-  tags: *tags_for_zsh_tasks
-
-- name: Install Oh-My-Zsh
-  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  tags: *tags_for_zsh_tasks
-
-- name: Install zsh-syntax-highlighting
-  ansible.builtin.git:
-    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-    dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-  become_user: "{{ username }}"
-  tags: *tags_for_zsh_tasks
-
-- name: Install zsh-autosuggestions
-  ansible.builtin.git:
-    repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
-    dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-  tags: *tags_for_zsh_tasks
-
-- name: Clone powerlevel10k theme
-  ansible.builtin.git:
-    repo: "https://github.com/romkatv/powerlevel10k.git"
-    dest: "/home/{{ username }}/.oh-my-zsh/custom/themes/powerlevel10k"
   tags: *tags_for_zsh_tasks
 
 # TODO: change with config checkout
@@ -63,3 +39,33 @@
     mode: u+rw,g+r,o--
   tags: *tags_for_zsh_tasks
   ignore_errors: True
+
+
+# OMZ
+# https://serverfault.com/questions/587727/how-to-unify-package-installation-tasks-in-ansible
+# - name: Remove Oh-My-Zsh if installed
+#   shell: uninstall_oh_my_zsh || rm -r /home/{{ username }}/.oh-my-zsh || true
+#   tags: &
+
+# - name: Install Oh-My-Zsh
+#   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#   tags: *tags_for_zsh_tasks
+
+# - name: Install zsh-syntax-highlighting
+#   ansible.builtin.git:
+#     repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+#     dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+#   become_user: "{{ username }}"
+#   tags: *tags_for_zsh_tasks
+
+# - name: Install zsh-autosuggestions
+#   ansible.builtin.git:
+#     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+#     dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+#   tags: *tags_for_zsh_tasks
+
+# - name: Clone powerlevel10k theme
+#   ansible.builtin.git:
+#     repo: "https://github.com/romkatv/powerlevel10k.git"
+#     dest: "/home/{{ username }}/.oh-my-zsh/custom/themes/powerlevel10k"
+#   tags: *tags_for_zsh_tasks
