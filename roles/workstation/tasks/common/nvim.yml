@@ -89,12 +89,6 @@
   become_user: root
   when: nvim.build == True
 
-# - name: Build neovim
-#   shell: "cd {{ nvim.clone_path }} && make CMAKE_BUILD_TYPE={{ nvim.build_type }}"
-#   become: yes
-#   tags: *tags_for_nvim_tasks
-#   when: nvim.build == True
-
 - name: Build and install neovim
   shell: "cd {{ nvim.clone_path }} && make CMAKE_BUILD_TYPE={{ nvim.build_type }} && sudo make install"
   become: yes
@@ -111,10 +105,6 @@
   become: yes
   become_user: root
   when: nvim.build == True
-
-#
-# - name: Add python support nvim
-#   shell: pip3 install --user --upgrade neovim
 
 - name: Install libs for checkhealth
   package:

@@ -6,7 +6,7 @@ include_dotfiles: True
 nvim:
   build: True
   build_type: "RelWithDebInfo"
-  clone_path: "/home/{{ username }}/.neovim-build"
+  clone_path: "/tmp/.neovim-build"
 
 dotfiles:
   url: git@github.com:hiimjako/dotfiles.git
