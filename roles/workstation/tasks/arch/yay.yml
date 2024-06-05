@@ -1,5 +1,4 @@
 ---
-
 - name: "Make sure the {{ yay.clone_path }} exists"
   file:
     path: "{{ yay.clone_path }}"

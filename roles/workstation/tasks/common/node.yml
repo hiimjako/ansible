@@ -1,3 +1,4 @@
+---
 - name: Remove fnm
   file:
     path: "/home/{{ username }}/.local/share/fnm"

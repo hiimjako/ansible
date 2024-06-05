@@ -1,3 +1,4 @@
+---
 - name: Remove zinit if installed
   shell: rm -r /home/{{username}}/.local/share/zinit
   tags: &tags_for_zsh_tasks ["init", "zsh"]

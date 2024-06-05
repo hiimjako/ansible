@@ -1,3 +1,4 @@
+---
 - name: Include default tasks
   include_tasks: "{{ item }}"
   loop:

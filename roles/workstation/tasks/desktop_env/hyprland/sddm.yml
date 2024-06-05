@@ -1,3 +1,4 @@
+---
 - name: Install dependencies sddm (dm)
   community.general.pacman:
     name:

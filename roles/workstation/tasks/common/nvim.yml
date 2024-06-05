@@ -1,3 +1,4 @@
+---
 - name: Unistall nvim (package manager)
   package:
     name:

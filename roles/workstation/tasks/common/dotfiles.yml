@@ -1,3 +1,4 @@
+---
 - name: Clone user dotfiles
   ansible.builtin.git:
     repo: "{{ dotfiles.url }}"
