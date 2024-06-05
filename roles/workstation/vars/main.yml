@@ -3,9 +3,6 @@ username: jako
 
 include_dotfiles: True
 
-nodejs:
-  version: 22.2.0
-
 nvim:
   build: True
   build_type: "RelWithDebInfo"

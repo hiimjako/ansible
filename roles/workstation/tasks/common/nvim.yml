@@ -125,35 +125,40 @@
   become_user: root
   tags: *tags_for_nvim_tasks
 
+- name: Set node version manager path
+  set_fact:
+    nvm_path: "/home/{{ username }}/.local/share/fnm/fnm"
+  tags: &tags_for_node_lsp_tasks ["init", "lsp", "nvim", "nodejs"]
+
 - name: Install Typescript
-  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g typescript"
-  tags: &tags_for_node_lsp_tasks ["init", "lsp", "nvim"]
+  shell: "eval `{{ nvm_path }} env` && npm i -g typescript"
+  tags: *tags_for_node_lsp_tasks
 
 - name: Install Typescript server
-  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g typescript-language-server"
+  shell: "eval `{{ nvm_path }} env` && npm i -g typescript-language-server"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install neovim npm
-  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g neovim"
+  shell: "eval `{{ nvm_path }} env` && npm i -g neovim"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install TS-Node
-  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g ts-node"
+  shell: "eval `{{ nvm_path }} env` && npm i -g ts-node"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install eslint server
-  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g vscode-langservers-extracted"
+  shell: "eval `{{ nvm_path }} env` && npm i -g vscode-langservers-extracted"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install tree-sitter
-  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g tree-sitter tree-sitter-cli"
+  shell: "eval `{{ nvm_path }} env` && npm i -g tree-sitter tree-sitter-cli"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install yaml server
-  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g yaml-language-server"
+  shell: "eval `{{ nvm_path }} env` && npm i -g yaml-language-server"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install vim server
-  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g vim-language-server"
+  shell: "eval `{{ nvm_path }} env` && npm i -g vim-language-server"
   tags: *tags_for_node_lsp_tasks
 

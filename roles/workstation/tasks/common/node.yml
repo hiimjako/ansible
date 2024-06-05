@@ -1,26 +1,38 @@
 ---
-- name: Remove fnm
-  file:
-    path: "/home/{{ username }}/.local/share/fnm"
-    state: absent
+- name: Set fnm dir
+  set_fact:
+    fnm_dir: "/home/{{ username }}/.local/share/fnm"
   tags: &tags_for_node_tasks 
     - init
     - nodejs
 
-- name: Install fnm
-  shell: curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "/home/{{ username }}/.local/share/fnm" --skip-shell
+- name: Remove fnm
+  file:
+    path: "{{ fnm_dir }}"
+    state: absent
   tags: *tags_for_node_tasks
+
+- name: Install fnm
+  shell: curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "{{ fnm_dir }}" --skip-shell
   args:
     warn: false
+  tags: *tags_for_node_tasks
+
+- name: Get the latest Node.js version
+  shell: "/home/{{ username }}/.local/share/fnm/fnm list-remote --sort=asc | tail -n1"
+  register: latest_node_version
+  tags: *tags_for_node_tasks
+
+- name: Set nodejs_version fact
+  set_fact:
+    nodejs_version: "{{ latest_node_version.stdout }}"
+  tags: *tags_for_node_tasks
 
 - name: Install correct version of Node
-  shell: "/home/{{ username }}/.local/share/fnm/fnm install {{ nodejs.version }}"
+  shell: "/home/{{ username }}/.local/share/fnm/fnm install {{ nodejs_version }}"
   tags: *tags_for_node_tasks
-  args:
-    executable: /bin/bash
 
 - name: Select default version of Node
-  shell: "/home/{{ username }}/.local/share/fnm/fnm default {{ nodejs.version }}"
+  shell: "/home/{{ username }}/.local/share/fnm/fnm default {{ nodejs_version }}"
   tags: *tags_for_node_tasks
-  args:
-    executable: /bin/bash
+
