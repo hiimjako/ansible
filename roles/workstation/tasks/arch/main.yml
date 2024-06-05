@@ -11,12 +11,12 @@
   tags: always
   when: ansible_distribution == "Archlinux"
 
-- name: Include DE arch 
-  include_tasks: "{{ item }}"
-  loop:
-    - sddm.yml
-    - hyprland/hyprland.yml
-    - hyprland/wofi.yml
-  tags: ["de", "hyprland"]
-  when: ansible_distribution == "Archlinux"
+# - name: Include DE arch 
+#   include_tasks: "{{ item }}"
+#   loop:
+#     - sddm.yml
+#     - hyprland/hyprland.yml
+#     - hyprland/wofi.yml
+#   tags: ["de", "hyprland"]
+#   when: ansible_distribution == "Archlinux"
 

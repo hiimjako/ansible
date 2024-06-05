@@ -11,7 +11,7 @@
       - nautilus
       - xorg-xinit
     state: present
-  tags: &tags_for_i3_tasks ["init", "i3"]
+  tags: &tags_for_i3_tasks ["i3"]
 
 - name: Copy xinitrc
   ansible.builtin.copy:

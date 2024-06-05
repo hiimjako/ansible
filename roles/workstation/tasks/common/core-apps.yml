@@ -21,6 +21,7 @@
       - httpie # richeiste http
       - net-tools
       - jq
+      - vorta # backup
     state: present
   become: yes
   become_user: root

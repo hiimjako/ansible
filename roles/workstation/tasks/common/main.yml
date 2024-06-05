@@ -9,5 +9,5 @@
     - nvim.yml
     - zsh.yml
     - kitty.yml
-    # - i3.yml
+    - cloudflared.yml
   tags: always
