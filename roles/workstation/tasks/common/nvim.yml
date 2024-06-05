@@ -126,42 +126,34 @@
   tags: *tags_for_nvim_tasks
 
 - name: Install Typescript
-  shell: >
-    bash -c "source ~/.nvm/nvm.sh && npm i -g typescript"
+  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g typescript"
   tags: &tags_for_node_lsp_tasks ["init", "lsp", "nvim"]
 
 - name: Install Typescript server
-  shell: >
-    bash -c "source ~/.nvm/nvm.sh && npm i -g typescript-language-server"
+  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g typescript-language-server"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install neovim npm
-  shell: >
-    bash -c "source ~/.nvm/nvm.sh && npm i -g neovim"
+  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g neovim"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install TS-Node
-  shell: >
-    bash -c "source ~/.nvm/nvm.sh && npm i -g ts-node"
+  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g ts-node"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install eslint server
-  shell: >
-    bash -c "source ~/.nvm/nvm.sh && npm i -g vscode-langservers-extracted"
+  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g vscode-langservers-extracted"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install tree-sitter
-  shell: >
-    bash -c "source ~/.nvm/nvm.sh && npm i -g tree-sitter tree-sitter-cli"
+  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g tree-sitter tree-sitter-cli"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install yaml server
-  shell: >
-    bash -c "source ~/.nvm/nvm.sh && npm i -g yaml-language-server"
+  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g yaml-language-server"
   tags: *tags_for_node_lsp_tasks
 
 - name: Install vim server
-  shell: >
-    bash -c "source ~/.nvm/nvm.sh && npm i -g vim-language-server"
+  shell: "eval `/home/jako/.local/share/fnm/fnm env` && npm i -g vim-language-server"
   tags: *tags_for_node_lsp_tasks
 
