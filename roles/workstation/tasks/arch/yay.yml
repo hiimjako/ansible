@@ -8,11 +8,11 @@
   tags: &tags_for_yay_tasks ["init", "yay"]
 
 - name: Build and install yay
-  command: makepkg -si
+  command: makepkg -si --noconfirm
   args:
     chdir: /tmp/yay
   register: makepkg_result
-  failed_when: "'installed' not in makepkg_result.stdout"
+  failed_when: makepkg_result.rc != 0
   tags: *tags_for_yay_tasks
   
 - name: Remove yay build directory
