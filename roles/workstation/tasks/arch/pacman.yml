@@ -8,8 +8,7 @@
       - fd # find ma figo
       - duf # tipo df ma figo
       - tldr # man abbreviato
-      - bashmount
-      - yay
+      # - bashmount
       - downgrade
       - miller
       - ripgrep
