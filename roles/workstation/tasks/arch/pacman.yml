@@ -9,7 +9,7 @@
       - duf # tipo df ma figo
       - tldr # man abbreviato
       # - bashmount
-      - downgrade
+      # - downgrade
       - miller
       - ripgrep
       - lsd
