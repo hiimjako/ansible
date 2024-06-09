@@ -26,6 +26,8 @@
   with_items:
     - { regexp: '^#Color$', replace: 'Color' }
     - { regexp: '^#VerbosePkgLists$', replace: 'VerbosePkgLists' }
+  become: yes
+  become_user: root
   tags: *tags_for_package_tasks
 
 # - name: Enable repositories
