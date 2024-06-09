@@ -2,11 +2,11 @@
 - include_vars: "{{ ansible_distribution }}.yml"
   tags: always
 
-- include: common/main.yml
+- include_task: common/main.yml
     
-- include: arch/main.yml
+- include_task: arch/main.yml
   when: ansible_distribution == "Archlinux"
 
-- include: ubuntu/main.yml
+- include_task: ubuntu/main.yml
   when: ansible_distribution == "Ubuntu"
 
