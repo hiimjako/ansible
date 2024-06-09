@@ -6,8 +6,8 @@
 - name: Include base arch tasks
   include_tasks: "{{ item }}"
   loop:
-    - yay.yml
     - pacman.yml
+    - yay.yml
   tags: always
   when: ansible_distribution == "Archlinux"
 
