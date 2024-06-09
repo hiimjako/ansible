@@ -14,8 +14,6 @@
 
 - name: Install fnm
   shell: curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "{{ fnm_dir }}" --skip-shell
-  args:
-    warn: false
   tags: *tags_for_node_tasks
 
 - name: Get the latest Node.js version
