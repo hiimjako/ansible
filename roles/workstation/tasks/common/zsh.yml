@@ -32,16 +32,20 @@
   tags: *tags_for_zsh_tasks
   ignore_errors: True
 
-- name: Copy zsh p10k dotfile
-  copy:
-    src: /home/{{ username }}/.p10k.zsh
-    dest: /home/{{ username }}/.p10k.zsh
-    force: false
-    owner: "{{ username }}"
-    group: "{{ username }}"
-    mode: u+rw,g+r,o--
+- name: Install oh-my-posh
+  shell: "curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin/"
   tags: *tags_for_zsh_tasks
-  ignore_errors: True
+
+# - name: Copy zsh p10k dotfile
+#   copy:
+#     src: /home/{{ username }}/.p10k.zsh
+#     dest: /home/{{ username }}/.p10k.zsh
+#     force: false
+#     owner: "{{ username }}"
+#     group: "{{ username }}"
+#     mode: u+rw,g+r,o--
+#   tags: *tags_for_zsh_tasks
+#   ignore_errors: True
 
 
 # OMZ
