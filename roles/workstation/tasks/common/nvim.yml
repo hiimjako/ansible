@@ -115,6 +115,38 @@
   become_user: root
   tags: *tags_for_nvim_tasks
 
+- name: Download LuaRocks
+  get_url:
+    url: https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+    dest: /tmp/luarocks-3.11.1.tar.gz
+  tags: *tags_for_nvim_tasks
+
+- name: Extract LuaRocks
+  ansible.builtin.unarchive:
+    src: /tmp/luarocks-3.11.1.tar.gz
+    dest: /tmp/
+    remote_src: yes
+  tags: *tags_for_nvim_tasks
+
+- name: Configure LuaRocks
+  shell: "./configure"
+  args:
+    chdir: /tmp/luarocks-3.11.1
+  tags: *tags_for_nvim_tasks
+
+- name: Build LuaRocks
+  make:
+    chdir: /tmp/luarocks-3.11.1
+  tags: *tags_for_nvim_tasks
+
+- name: Install LuaRocks
+  make:
+    target: install
+    chdir: /tmp/luarocks-3.11.1
+  become: yes
+  become_user: root
+  tags: *tags_for_nvim_tasks
+
 # No more needs, there is mason
 # - name: Set node version manager path
 #   set_fact:
