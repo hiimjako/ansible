@@ -22,7 +22,7 @@
   tags: *tags_for_yay_tasks
 
 - name: Install pkgs
-  shell: "yay -S oh-my-posh downgrade"
+  shell: "yay -S oh-my-posh downgrade lazygit"
   become: yes
   become_user: root
   tags: *tags_for_yay_tasks
