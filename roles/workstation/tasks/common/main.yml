@@ -10,5 +10,5 @@
     - nvim.yml
     - zsh.yml
     - kitty.yml
-    - cloudflared.yml
+    # - cloudflared.yml
   tags: always
